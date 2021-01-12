@@ -1,13 +1,57 @@
 ---
 layout: base
 ---
+{%- include audio.html -%}
 
 
-	{%- include audio.html -%}	
 
-	{{ content }}
-	
-	{%- include icons.html -%}	
-	{%- include cursor.html -%}
+<!-- Desktop Windows  -->
+
+{% for window in site.desktop_windows %}
+
+<div class="desktop window" style="left:{{ window.left }}%;top: {{ window.top }}%;">
+	<div class="close"></div>
+	<div class="header">
+		{{ window.header }}
+	</div>
+	<div class="content">
+		{{ window.emoji }}
+		{{ window.content }}
+		{{ window.emoji }}
+	</div>
+</div>
+
+{% endfor %}
 
 
+<!-- Desktop Icons -->
+
+{% for icon in site.desktop_icons %}
+<div class="icon-hitbox" style="left:{{ icon.left }}%;top: {{ icon.top }}%;">
+	<div class="icon {{ icon.name }}">
+		<?xml version="1.0" ?>
+		{{ icon.content }}
+	</div>
+	{% if icon.label %}
+		<span>{{ icon.label }}</span>
+	{% endif %}
+</div>
+{% endfor %}
+
+
+{{ content }}
+
+{%- include cursor.html -%}
+
+
+
+
+<script src="/scripts/v3/helpers.js?cachedz={{ page.cachedz }}"></script>
+<script src="/scripts/v3/paulie.js?cachedz={{ page.cachedz }}"></script>
+<script src="/scripts/v3/index.js?cachedz={{ page.cachedz }}"></script>
+
+<script>
+
+
+
+</script>

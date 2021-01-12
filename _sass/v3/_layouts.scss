@@ -1,0 +1,131 @@
+.scroll {
+    /* width */
+    ::-webkit-scrollbar {
+        width: 15px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        // box-shadow:  0 0 5px grey;
+        background-color: darken($grey, 10%);
+        border-radius: 0px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: darken($grey, 20%);
+        // border-radius: 1px;
+        // border: solid 3px black;
+        border-right-width: 0px;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: darken($grey, 40%);
+    }
+}
+
+.desktop.window {
+    z-index: 10;
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    height: 200px;
+
+    width: 230px;
+    display: flex;
+    flex-direction: column;
+
+    @extend .scroll;
+
+    &.closed {
+        display: none;
+    }
+
+    .header {
+        background: darken($grey, 25%);
+        width: 100%;
+        height: 30px;
+        min-height: 30px;
+        display: flex;
+        align-items: center;
+        padding-left: 28px;
+
+        border-left: $border;
+        border-top: $border;
+        border-right: $border;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+    .content {
+        $grey: #d8d8d8;
+
+        flex-grow: 1;
+        border: $border;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        background: $grey;
+        padding: 5px 10px;
+
+        max-height: 200px;
+        overflow: auto;
+    }
+
+    .close {
+        position: absolute;
+        top: 9px;
+        left: 0px;
+        z-index: 100;
+        border-radius: 10px;
+        width: 16px;
+        height: 16px;
+        border: $border;
+        background: $red;
+        margin: 0 10px;
+    }
+}
+
+// ----- Desktop Icons ------
+
+.icon-hitbox {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .icon {
+        &.empty {
+            border: solid 2px black;
+            border-radius: 5px;
+        }
+        &:hover {
+            svg {
+                fill: $blue;
+            }
+        }
+        svg {
+            fill: black;
+        }
+    }
+    span {
+        margin-top: 5px;
+        text-align: center;
+        padding: 2px 4px;
+    }
+}
+
+.selected {
+    .icon {
+        &.empty {
+            border: 2px solid #2962ff;
+        }
+        svg {
+            fill: $blue;
+        }
+    }
+    span {
+        background: $blue;
+        color: white;
+    }
+}
