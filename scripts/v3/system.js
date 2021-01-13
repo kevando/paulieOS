@@ -2,17 +2,14 @@
 var SystemOS = function () {
 
     this.newMessageSound = document.getElementById("NewMessageSound");
-
-
     this.fart = createSound('/assets/sounds/fart.mp3');
 
 
     $("#SimpleWindowTemplate").hide()
-
-    $('.icon-hitbox').fadeOut(0)
+    $('.icons').fadeOut(0)
 
     this.wakeUp = () => {
-        $('.icon-hitbox').delay(500).fadeIn("slow")
+        $('.icons').delay(500).fadeIn("slow")
     }
     this.addSimpleWindow = () => {
 

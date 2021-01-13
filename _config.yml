@@ -16,10 +16,3 @@ sass:
   # style: compressed
 
 
-collections:
-
-  desktop_windows:
-    output: true # render each item
-
-  desktop_icons:
-    output: true # render each item

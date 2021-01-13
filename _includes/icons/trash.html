@@ -1,10 +1,5 @@
----
-left: 90
-top: 90
-name: trash
----
-
-<?xml version="1.0" ?><svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+<?xml version="1.0" ?>
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="TrashIcon">
     <title />
     <g data-name="1" id="_1">
         <path
@@ -17,3 +12,41 @@ name: trash
         <path d="M405.81,135.66H122.32a15,15,0,0,1,0-30H405.81a15,15,0,0,1,0,30Z" />
     </g>
 </svg>
+
+<div id="TrashWindow" class="desktop window">
+    <div class="close"></div>
+    <div class="header">
+        Bin
+    </div>
+    <div class="content">
+        <h3>System OS Garbage</h3>
+        <p>Does Oscar live here?
+        </p>
+    </div>
+</div>
+
+
+<script>
+
+    // $("#TrashIcon").dblclick(function () {
+    //         $("#TrashWindow").show()
+    //     });
+    $("#TrashWindow").hide();
+    // $("#TrashIcon").hide();
+    // $('.icons').hide()
+
+    Draggable.create("#TrashWindow", {
+        trigger: "#TrashWindow .header",
+        type: "x,y",
+    });
+
+    Draggable.create("#TrashIcon");
+
+
+    $("#TrashIcon").css("right", "10%")
+    $("#TrashIcon").css("bottom", "10%")
+
+    $("#TrashWindow").css("right", "10%")
+    $("#TrashWindow").css("bottom", "10%")
+
+</script>

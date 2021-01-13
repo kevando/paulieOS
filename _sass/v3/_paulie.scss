@@ -1,0 +1,105 @@
+$shadow: drop-shadow(-10px 10px 0px rgba(0, 0, 0, 0.1));
+$shadowClicked: drop-shadow(3px 6px 1px rgba(0, 0, 0, 0.2));
+
+#Paulie {
+    position: absolute;
+    z-index: 100;
+    perspective: 100px;
+    // transition: left 1s, top 1s;
+    top: 0px;
+    left: 0px;
+
+    .body {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        // border: solid 1px red;
+        background-image: url(/assets/images/paulie-smirk.svg);
+        filter: $shadow;
+    }
+    .face {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+    }
+
+    // pointer-events: none;
+
+    &.clicking {
+        div {
+            // border: red 2px solid;
+            // transform: scale(0.95);
+            transform: translate3d(-3px, -4px, -5px);
+            &.body {
+                filter: $shadowClicked;
+            }
+        }
+    }
+    &.sleeping {
+        animation: sleeping 3s infinite alternate ease-in-out;
+        .body {
+            animation: sleeping-face 6s infinite ease-in-out;
+        }
+    }
+    &.wakingUp {
+        transition: all 500ms ease-in;
+        .body {
+            // transform: scale(2.1);
+        }
+    }
+}
+
+@keyframes sleeping {
+    0% {
+        //  transform: translateY(0px);
+        margin-top: 0px;
+    }
+    100% {
+        margin-top: -10px;
+        // transform: translateY(-10px);
+    }
+}
+@keyframes sleeping-face {
+    0% {
+        background-image: url(/assets/images/paulie-sleep-open-mouth.svg);
+    }
+    50% {
+        background-image: url(/assets/images/paulie-sleep-open-mouth.svg);
+    }
+    51% {
+        background-image: url(/assets/images/paulie-sleep-small-mouth.svg);
+    }
+    100% {
+        background-image: url(/assets/images/paulie-sleep-small-mouth.svg);
+    }
+}
+// @keyframes sleeping-face-closed {
+//     0% {
+//         opacity: 1;
+//         transform: translateY(0px); // going up
+//     }
+//     20% {
+//         opacity: 1;
+//     }
+//     30% {
+//         opacity: 0;
+//     }
+//     40% {
+//         opacity: 0;
+//         transform: translateY(-10px); // top
+//     }
+//     49% {
+//         opacity: 1; // going down
+//     }
+//     80% {
+//         opacity: 1;
+//         transform: translateY(0px);
+//     }
+//     99% {
+//         opacity: 1;
+//     }
+//     100% {
+//         opacity: 1;
+//         transform: translateY(0px);
+//     }
+// }

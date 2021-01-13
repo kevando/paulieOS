@@ -1,10 +1,6 @@
----
-left: 90
-top: 5
-name: pencil
----
+<?xml version="1.0" ?>
 
-<?xml version="1.0" ?><svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+<svg id="Pencil" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
     <title />
     <g data-name="1" id="_1">
         <path
@@ -16,3 +12,41 @@ name: pencil
         <path d="M391.63,135.07a15,15,0,0,1-10.61-4.4l-5-5a15,15,0,0,1,21.21-21.21l5,5a15,15,0,0,1-10.6,25.61Z" />
     </g>
 </svg>
+
+<script>
+
+
+
+
+
+var draggy = Draggable.create("#Pencil", {
+
+// type: "y",
+// bounds: document.getElementById("container"),
+// throwProps: true,
+// onClick: function () {
+//     console.log("clicked");
+// },
+// onDragEnd: function () {
+// }
+
+
+type:"x,y",
+
+
+});
+
+$( "#Pencil" ).dblclick(function() {
+//   alert( "Handler for .dblclick() called." );
+});
+
+
+$("#Pencil").mousemove(function(e) {
+    console.log("move",e)
+    $(this).css("top",e.clientY-30)
+    $(this).css("left",e.clientX-20)
+})
+
+
+
+</script>
