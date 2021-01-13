@@ -30,7 +30,7 @@ var Paulie = function (initialState, OFFSET_X, OFFSET_Y) {
             var delta = Math.abs(e.movementX)
             this.distance += delta;
         }
-        if(this.distance > 1500 && this.currentStoryBeat === 0) {
+        if(this.distance > 2500 && this.currentStoryBeat === 0) {
             systemOS.showWelcome();
             this.currentStoryBeat++;
         }

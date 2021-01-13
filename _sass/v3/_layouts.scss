@@ -129,3 +129,29 @@
         color: white;
     }
 }
+
+
+// --- Buttons ----
+
+
+#NavBar {
+    // background: $grey;
+    height: 6vh;
+    position: absolute;
+    bottom: 2vh;
+    left: 2vh;
+    width: 100%;
+    // border-top: solid 0.5vh black;
+    
+}
+#Fart {
+    
+    font-size: 3vh;
+    padding: 0 6vh;
+    border-radius: 1vh;
+    border: solid 4px black;
+    // position
+    background-color: lighten($grey, 20%);
+    height: 100%;
+
+}

@@ -1,6 +1,6 @@
 const EDGE = 300
-const OFFSET_X = document.body.clientWidth /2 //randomInt(EDGE, document.body.clientWidth - EDGE)
-const OFFSET_Y = randomInt(200, 500 )
+const OFFSET_X = document.body.clientWidth / 2 //randomInt(EDGE, document.body.clientWidth - EDGE)
+const OFFSET_Y = randomInt(200, 500)
 
 
 
@@ -23,22 +23,17 @@ borderSize = range(paulie_width_min, paulie_width_max, 2, 5, paulieWidth)
 fontSize = lerp(16, 22, systemSize)
 
 
-var systemOS = new SystemOS();
+var playerOS = getOS();
 
-// Shorthand for $( document ).ready()
-$(function () {
+if (isOSValid()) {
+    $("#Fart").hide()
 
-    
-    
-    // ----------------
-    //     Paulie
-    // ----------------
-
+    var systemOS = new SystemOS();
     var paulie = new Paulie("sleeping", OFFSET_X, OFFSET_Y)
 
     var $Paulie = paulie.$el;
 
-    if (!$Paulie) return;
+
 
     // -----------------------------------
 
@@ -176,4 +171,25 @@ $(function () {
 
     })
 
-});
+} else {
+
+    $("body").addClass("off")
+    $(".desktop.window").hide();
+    $(".icon-hitbox").hide();
+    $("#fart").show();
+
+    var fartSound = document.getElementById("FartSound");
+    fartSound.load()
+
+    $("#Fart").click(function () {
+
+        var $this = $(this);
+
+        setTimeout(function() {
+            fartSound.play()
+            $this.fadeOut(100)
+            $this.delay(7000).fadeIn(800)
+        },500)
+        
+    })
+}

@@ -26,30 +26,13 @@
 // }
 
 
-$green: #68ffbb;
-$red: #ff0000;
-$grey: #eeeeee;
 
-@mixin flex($jc: center, $ai: center, $fd: column) {
-    display: flex;
-    justify-content: $jc;
-    align-items: $ai;
-    flex-direction: $fd;
-}
 
 body.awake,
 #Paulie.awake {
     cursor: none !important;
 }
 
-@font-face {
-    font-family: VT323;
-    src: url(/assets/fonts/VT323.ttf);
-}
-@font-face {
-    font-family: terminal;
-    src: url(/assets/fonts/terminal-grotesque.ttf);
-}
 
 * {
     box-sizing: border-box;
@@ -77,6 +60,9 @@ body {
     }
     &.awake {
         transition: background-color 300ms;
+        background-color: $green;
+    }
+    &.off {
         background-color: $green;
     }
 }

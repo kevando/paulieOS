@@ -1,0 +1,23 @@
+
+
+$green: #68ffbb;
+$red: #ff0000;
+$grey: #eeeeee;
+
+
+@font-face {
+    font-family: VT323;
+    src: url(/assets/fonts/VT323.ttf);
+}
+@font-face {
+    font-family: terminal;
+    src: url(/assets/fonts/terminal-grotesque.ttf);
+}
+
+
+@mixin flex($jc: center, $ai: center, $fd: column) {
+    display: flex;
+    justify-content: $jc;
+    align-items: $ai;
+    flex-direction: $fd;
+}
