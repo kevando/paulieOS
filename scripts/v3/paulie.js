@@ -16,10 +16,24 @@ var Paulie = function (initialState, OFFSET_X, OFFSET_Y) {
     this.rot = "1,1,1,0deg";
     this.skew = "0deg";
 
+    this.distance = 0;
+    this.currentStoryBeat = 0;
+
+
     this.updateTransform = () => {
         // console.log(this.x)
         var transform = "perspective(" + this.p + "px) translate3d(" + this.x + "px," + this.y + "px, 0px) rotate3d(" + this.rot + ")";
         this.$el.css("transform", transform)
+    }
+    this.onMove = e => {
+        if (this.state === "awake") {
+            var delta = Math.abs(e.movementX)
+            this.distance += delta;
+        }
+        if(this.distance > 1500 && this.currentStoryBeat === 0) {
+            systemOS.showWelcome();
+            this.currentStoryBeat++;
+        }
     }
 
     this.getState = () => {
@@ -28,7 +42,7 @@ var Paulie = function (initialState, OFFSET_X, OFFSET_Y) {
     this.wakeUp = () => {
         this.state = "awake";
 
-
+        systemOS.wakeUp()
         // DRAGGABLERS!
 
         Draggable.zIndex = 10;

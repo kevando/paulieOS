@@ -73,3 +73,24 @@ function eraseCookie(name) {
 //     document.body.appendChild(sound);
 //     return sound;
 // }
+
+function createSound(src,callback = function() {}) {
+    
+    var sound = document.createElement('audio');
+    sound.controls = 'controls';
+    sound.src = src;
+    sound.style.display = "none";
+    sound.type = 'audio/mpeg';
+    document.body.appendChild(sound);
+
+    sound.addEventListener('loadeddata', function () {
+
+        if (sound.readyState >= 2) {
+            // sound.play();
+        }
+
+        callback()
+    });
+    return sound;
+
+}

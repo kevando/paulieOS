@@ -7,21 +7,18 @@ layout: base
 
 <!-- Desktop Windows  -->
 
-{% for window in site.desktop_windows %}
 
-<div class="desktop window" style="left:{{ window.left }}%;top: {{ window.top }}%;">
+
+<div id="SimpleWindowTemplate" class="desktop window" >
 	<div class="close"></div>
 	<div class="header">
-		{{ window.header }}
+		System Message 
 	</div>
 	<div class="content">
-		{{ window.emoji }}
-		{{ window.content }}
-		{{ window.emoji }}
+		<p><b>>>>>From: Update Manager</b> **>>>>To: Paulie:**  ** * * * <strong>Begin transmission</strong> ****
+			u cant avoid me forever!<br/><<<<< End Transimizion >>>>>></p>
 	</div>
 </div>
-
-{% endfor %}
 
 
 <!-- Desktop Icons -->
@@ -48,6 +45,7 @@ layout: base
 
 <script src="/scripts/v3/helpers.js?cachedz={{ page.cachedz }}"></script>
 <script src="/scripts/v3/paulie.js?cachedz={{ page.cachedz }}"></script>
+<script src="/scripts/v3/system.js?cachedz={{ page.cachedz }}"></script>
 <script src="/scripts/v3/index.js?cachedz={{ page.cachedz }}"></script>
 
 <script>

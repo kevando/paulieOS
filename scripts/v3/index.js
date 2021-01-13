@@ -1,6 +1,6 @@
 const EDGE = 300
-const OFFSET_X = randomInt(EDGE, document.body.clientWidth - EDGE)
-const OFFSET_Y = randomInt(EDGE, document.body.clientHeight - EDGE)
+const OFFSET_X = document.body.clientWidth /2 //randomInt(EDGE, document.body.clientWidth - EDGE)
+const OFFSET_Y = randomInt(200, 500 )
 
 
 
@@ -22,10 +22,17 @@ iconSize = paulieWidth * 0.944;
 borderSize = range(paulie_width_min, paulie_width_max, 2, 5, paulieWidth)
 fontSize = lerp(16, 22, systemSize)
 
+
+var systemOS = new SystemOS();
+
 // Shorthand for $( document ).ready()
 $(function () {
 
-    // Heyyyy!
+    
+    
+    // ----------------
+    //     Paulie
+    // ----------------
 
     var paulie = new Paulie("sleeping", OFFSET_X, OFFSET_Y)
 
@@ -37,6 +44,7 @@ $(function () {
 
 
 
+    // systemOS.showWelcome()
     // Set System Size based on browser window
 
 
@@ -61,7 +69,7 @@ $(function () {
     var clickUp = document.getElementById("AudioClickUp");
     var wakeUp = document.getElementById("AudioWakeUp");
 
-    clickDown.load();
+    // clickDown.load();
     clickUp.load();
     wakeUp.load();
 
@@ -112,6 +120,7 @@ $(function () {
 
 
     function onMouseMove(e) {
+        paulie.onMove(e)
 
         if ($Paulie.hasClass("waking")) {
             setTimeout(function () { $Paulie.removeClass("waking") }, 50)
@@ -162,6 +171,7 @@ $(function () {
     $('.desktop.window .close').click(function () {
         if (paulie.state !== "sleeping") {
             $(this).parent().addClass("closed")
+            systemOS.fart.play()
         }
 
     })
