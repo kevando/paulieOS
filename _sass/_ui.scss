@@ -1,44 +1,3 @@
-#Netsurf {
-    width: 150px;
-    padding: 0.5em;
-}
-
-#Netsurf h2 {
-    background-color: red;
-    text-align: center;
-    margin: 0;
-}
-
-.ui-resizable-he0lper {
-    border: 1px dotted gray;
-}
-
-.ui-widget-content {
-    background: yellow !important;
-}
-
-#QuantumRectangle {
-}
-
-
-
-#ComplexWindow {
-    border: solid 3px black;
-    border-radius: 5px;
-    width: 250px;
-    height: 300px;
-    .ui-widget-header {
-        background: $grey !important;
-        color: black;
-        margin: 0;
-    }
-
-    .ui-widget-content {
-        background: #fff !important;
-    }
-}
-
-
 .scroll {
     /* width */
     ::-webkit-scrollbar {
@@ -65,3 +24,121 @@
         background: darken($grey, 40%);
     }
 }
+
+// ------------------
+//      Windows
+// ------------------
+
+#SystemHello {
+    top: 10%;
+    width: 250px;
+    height: 300px;
+}
+#QuantumRectangle {
+    bottom: 10%;
+    width: 200px;
+    height: 200px;
+}
+#Netsurf {
+    bottom: 10%;
+    width: 200px;
+    height: 200px;
+}
+
+.ui.window {
+    z-index: 10;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+
+    @extend .scroll;
+
+    .header {
+        margin: 0;
+        background: darken($grey, 25%);
+        width: 100%;
+        height: 30px;
+        min-height: 30px;
+        display: flex;
+        align-items: center;
+        padding-left: 28px;
+
+        border-left: $border;
+        border-top: $border;
+        border-right: $border;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+    .content {
+        $grey: #d8d8d8;
+
+        flex-grow: 1;
+        border: $border;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        background: $grey;
+        padding: 5px 10px;
+
+        // max-height: 200px;
+        overflow: auto;
+    }
+
+    .close {
+        position: absolute;
+        top: 9px;
+        left: 0px;
+        z-index: 100;
+        border-radius: 10px;
+        width: 16px;
+        height: 16px;
+        border: $border;
+        background: $red;
+        margin: 0 10px;
+    }
+
+    .ui-icon-gripsmall-diagonal-se {
+        background-position: -68px -227px;
+    }
+}
+
+.ui-resizable-helper {
+    border: 3px dashed #888;
+}
+
+// ------------------
+//      Icons
+// ------------------
+
+.icon.empty {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    border: solid 3px black;
+    border-radius: 5px;
+
+    span.text {
+        margin-top: 85px;
+        text-align: center;
+        padding: 2px 4px;
+    }
+}
+
+
+// .selected {
+//     .icon {
+//         &.empty {
+//             border: 2px solid #2962ff;
+//         }
+//         svg {
+//             fill: $blue;
+//         }
+//     }
+//     span {
+//         background: $blue;
+//         color: white;
+//     }
+// }

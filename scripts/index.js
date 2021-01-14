@@ -24,44 +24,99 @@ $(function () {
 
     // Set up UI
 
-    $('#Netsurf').dialog({
-        position: { my: "left top", at: "left center", of: window },
-        resizeable: true,
-        height: 300,
-
-    });
-
-    $(function () {
-        $('#QuantumRectangle').dialog({
-            resizable: false,
-            height: 250,
-            width: 450,
-        });
-    });
-
-
-    $("#ComplexWindow").resizable({
+    $('#Netsurf').resizable({
         helper: "ui-resizable-helper",
-        width: 300,
-        // position: { my: "left top", at: "left center", of: window },
+        minWidth: 100,
+        minHeight: 100,
+        maxHeight: 500,
+        maxWidth: 500
+
+    }).draggable({
+        handle: '.header',
+        containment: "body"
     });
 
-    $("#ComplexWindow").draggable({
-        handle: 'h3'
+
+    // ---- QR Window -----
+
+    $("#QuantumRectangle").resizable({
+        helper: "ui-resizable-helper",
+        minWidth: 200,
+        minHeight: 200,
+        maxHeight: 200,
+        maxWidth: 200
+
+    }).draggable({
+        handle: '.header',
+        containment: "body"
     });
 
-    $(".icon").draggable({
+    $("#QuantumRectangle").css("left", 20);
+    $("#QuantumRectangle").css("bottom", 20);
 
+    // --- Hello Window ---
+
+    $("#SystemHello").resizable({
+        helper: "ui-resizable-helper",
+        minWidth: 250,
+        minHeight: 250,
+        maxHeight: 600,
+        maxWidth: 900,
+
+    }).draggable({
+        handle: '.header',
+        containment: "body"
     });
+
+    $("#SystemHello").css("left", 20);
+    $("#SystemHello").css("top", 20);
+
+    // --- All Windows ---
+
+    $(".ui.window .close").on("click", function () {
+        $(this).parent().hide()
+    })
+
+    $(".icon").draggable();
 
 
     // Audio
 
 
-    var clickDownSound = createSound("click_down.mp3")
 
 
-    clickDownSound.load()
+
+    // Sound City
+
+    var clickDown = createSound("click_down.mp3")
+    var clickUp = createSound("click_up.mp3")
+    var clickBad = createSound("click_bad.mp3")
+    var fart = createSound("fart.mp3")
+    var wakeUp = createSound("paulie_wake_up.mp3")
+
+    clickDown.volume = 0.3;
+    clickUp.volume = 0.3;
+
+    clickDown.load();
+    clickUp.load();
+    fart.load();
+    wakeUp.load();
+
+
+    // ---- Click Town ----
+
+    const mouseUp = () => {
+        clickUp.play()
+    };
+    const mouseDown = (e) => {
+
+        clickDown.play()
+
+    };
+
+    $(document).on('mousedown', mouseDown)
+    $(document).on('mouseup', mouseUp)
+
 });
 
 
