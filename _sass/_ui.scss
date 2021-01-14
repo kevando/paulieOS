@@ -29,22 +29,6 @@
 //      Windows
 // ------------------
 
-#SystemHello {
-    top: 10%;
-    width: 250px;
-    height: 300px;
-}
-#QuantumRectangle {
-    bottom: 10%;
-    width: 200px;
-    height: 200px;
-}
-#Netsurf {
-    bottom: 10%;
-    width: 200px;
-    height: 200px;
-}
-
 .ui.window {
     z-index: 10;
     position: absolute;
@@ -121,24 +105,21 @@
     border-radius: 5px;
 
     span.text {
-        margin-top: 85px;
+        margin-top: 90px;
         text-align: center;
-        padding: 2px 4px;
+        padding: 3px 8px;
     }
 }
 
+.icon.selected {
+    border: 2px solid #2962ff;
 
-// .selected {
-//     .icon {
-//         &.empty {
-//             border: 2px solid #2962ff;
-//         }
-//         svg {
-//             fill: $blue;
-//         }
-//     }
-//     span {
-//         background: $blue;
-//         color: white;
-//     }
-// }
+    svg {
+        fill: $blue;
+    }
+
+    span.text {
+        background: $blue;
+        color: white;
+    }
+}

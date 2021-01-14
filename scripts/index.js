@@ -34,8 +34,7 @@ $(function () {
     }).draggable({
         handle: '.header',
         containment: "body"
-    });
-
+    }).css("right", "20%").css("top", "1%").width(250).height(300);
 
     // ---- QR Window -----
 
@@ -49,10 +48,7 @@ $(function () {
     }).draggable({
         handle: '.header',
         containment: "body"
-    });
-
-    $("#QuantumRectangle").css("left", 20);
-    $("#QuantumRectangle").css("bottom", 20);
+    }).css("left", "50%").css("bottom", "20%").width(200).height(200);
 
     // --- Hello Window ---
 
@@ -68,8 +64,10 @@ $(function () {
         containment: "body"
     });
 
-    $("#SystemHello").css("left", 20);
-    $("#SystemHello").css("top", 20);
+    $("#SystemHello").css("left", "5%");
+    $("#SystemHello").css("top", "1%");
+    $("#SystemHello").width(300);
+    $("#SystemHello").height(300);
 
     // --- All Windows ---
 
@@ -77,14 +75,15 @@ $(function () {
         $(this).parent().hide()
     })
 
+    // --- Desktop Icons ---
+
     $(".icon").draggable();
 
+    $(".icon").on("mouseup",function(){
+        $(this).addClass("selected");
+    })
 
     // Audio
-
-
-
-
 
     // Sound City
 
@@ -109,8 +108,8 @@ $(function () {
         clickUp.play()
     };
     const mouseDown = (e) => {
-
-        clickDown.play()
+        clickDown.play();
+        $(".icon").removeClass("selected");
 
     };
 
