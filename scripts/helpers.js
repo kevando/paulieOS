@@ -74,8 +74,10 @@ function eraseCookie(name) {
 //     return sound;
 // }
 
-function createSound(src,callback = function() {}) {
+function createSound(filename,callback = function() {}) {
     
+  var src = "/assets/sounds/" + filename;
+  
     var sound = document.createElement('audio');
     sound.controls = 'controls';
     sound.src = src;

@@ -63,6 +63,18 @@
   -webkit-transform-origin: $style;
 }
 
+// ==========================
+//      Flex Box
+// ==========================
+
+@mixin flex($jc: center, $ai: center, $fd: column) {
+  display: flex;
+  justify-content: $jc;
+  align-items: $ai;
+  flex-direction: $fd;
+}
+
+
 
 // ==========================
 //      Media Queries

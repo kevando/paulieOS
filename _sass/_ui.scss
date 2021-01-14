@@ -1,0 +1,67 @@
+#Netsurf {
+    width: 150px;
+    padding: 0.5em;
+}
+
+#Netsurf h2 {
+    background-color: red;
+    text-align: center;
+    margin: 0;
+}
+
+.ui-resizable-he0lper {
+    border: 1px dotted gray;
+}
+
+.ui-widget-content {
+    background: yellow !important;
+}
+
+#QuantumRectangle {
+}
+
+
+
+#ComplexWindow {
+    border: solid 3px black;
+    border-radius: 5px;
+    width: 250px;
+    height: 300px;
+    .ui-widget-header {
+        background: $grey !important;
+        color: black;
+        margin: 0;
+    }
+
+    .ui-widget-content {
+        background: #fff !important;
+    }
+}
+
+
+.scroll {
+    /* width */
+    ::-webkit-scrollbar {
+        width: 15px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        // box-shadow:  0 0 5px grey;
+        background-color: darken($grey, 10%);
+        border-radius: 0px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: darken($grey, 20%);
+        // border-radius: 1px;
+        // border: solid 3px black;
+        border-right-width: 0px;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: darken($grey, 40%);
+    }
+}
