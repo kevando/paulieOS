@@ -62,8 +62,6 @@
         border-bottom-right-radius: 10px;
         background: $grey;
         padding: 5px 10px;
-
-        // max-height: 200px;
         overflow: auto;
     }
 
@@ -89,9 +87,9 @@
     border: 3px dashed #888;
 }
 
-// ------------------
-//      Icons
-// ------------------
+// ---------------
+//     Icons
+// ---------------
 
 .icon.empty {
     position: absolute;
@@ -114,12 +112,9 @@
 .icon.selected {
     border: 2px solid #2962ff;
 
-    svg {
-        fill: $blue;
-    }
-
     span.text {
         background: $blue;
         color: white;
     }
+    // svg { fill: $blue; }
 }

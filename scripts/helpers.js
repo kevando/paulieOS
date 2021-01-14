@@ -50,6 +50,7 @@ function createSound(filename, callback = function () { }) {
   sound.src = src;
   sound.style.display = "none";
   sound.type = 'audio/mpeg';
+  sound.preload = "auto"
   document.body.appendChild(sound);
 
 

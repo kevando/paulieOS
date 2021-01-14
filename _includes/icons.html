@@ -1,0 +1,39 @@
+<script>
+
+    $(function () {
+
+        // --- Desktop Icons ---
+
+        $(".icon").draggable({
+            drag: function (event, ui) {
+
+            }
+        });
+
+
+
+        const mouseUp = () => {
+            // clickUp.play()
+        };
+        const mouseDown = (e) => {
+
+            $('.icons').removeClass("selected");
+            if ($(e.target).hasClass("icon")) {
+                $(e.target).addClass("selected");
+            }
+
+        };
+
+        $(document).on('mousedown', mouseDown)
+        $(document).on('mouseup', mouseUp)
+
+        $(".icon").on("mouseup", function () {
+
+        })
+    })
+</script>
+<!-- file.png -->
+
+<div id="FileIcon" class="icon empty">
+    <span class="text">file.png</span>
+</div>
