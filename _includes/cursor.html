@@ -1,19 +1,19 @@
 <div id="Paulie">
-    <img src="/assets/images/paulie/face-smirk.png" id="Face" class="face" />
+    <img src="/assets/images/paulie/face-smirk.svg" id="Face" class="face" />
     <div class="body"></div>
 </div>
 
 
 <script>
 
-    var clickDown = createSound("click_down.mp3", function () {
-        console.log("mp3 ready")
-    })
+    // var clickDown = createSound("click_down.mp3", function () {
+    //     console.log("mp3 ready")
+    // })
     var clickUp = createSound("click_up.mp3")
-    clickDown.volume = 0.2;
+
     clickUp.volume = 0.2;
 
-    clickDown.load();
+
     clickUp.load();
 
 
@@ -21,15 +21,25 @@
 
     $(function () {
 
-
-
-        const MIN = 40; // SCALE = 0
-        const MAX = 100; // SCALE = 1
+        const MIN_WIDTH = 40; // SCALE = 0
+        const MAX_WIDTH = 70; // SCALE = 1
         const SCALE = range(900, 2000, 0, 1, document.body.clientWidth);
 
-        const WIDTH = lerp(MIN, MAX, SCALE)
+        const WIDTH = lerp(MIN_WIDTH, MAX_WIDTH, SCALE)
         const HEIGHT = WIDTH * 1.5833333;
 
+        const ICON_SIZE = lerp(60, 60, SCALE);
+        const BORDER_WIDTH = lerp(2, 4, SCALE);
+        const FONT_SIZE = lerp(12, 18, SCALE);
+
+        $('.icon').width(ICON_SIZE).height(ICON_SIZE).css("borderWidth", Math.round(BORDER_WIDTH));
+        $('.icon .text').css("fontSize", Math.round(FONT_SIZE))
+
+
+
+
+        $paulie.width(WIDTH)
+        $paulie.height(HEIGHT)
 
 
         var clicking = false;
@@ -40,16 +50,7 @@
         window.dispatchEvent(evt);
 
 
-
-        $paulie.width(WIDTH)
-        $paulie.height(HEIGHT)
-
-
-
-
-
         $paulie.move = (e) => {
-            // console.log(e.pageX,e.clientX);
             $paulie.css("transform", `translate(${e.clientX}px, ${e.clientY}px)`)
         }
 
@@ -59,7 +60,7 @@
             $paulie.removeClass("clicking");
         };
         const mouseDown = (e) => {
-            clickDown.play();
+
             $(".icon").removeClass("selected");
             clicking = true;
             $paulie.addClass("clicking");
@@ -69,6 +70,14 @@
         $(document).on('mousedown', mouseDown)
         $(document).on('mouseup', mouseUp)
         $(document).on('mousemove', $paulie.move);
+
+
+
+        // prevent right clicks
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+
+
 
     })
 </script>

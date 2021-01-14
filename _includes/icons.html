@@ -4,17 +4,9 @@
 
         // --- Desktop Icons ---
 
-        $(".icon").draggable({
-            drag: function (event, ui) {
-
-            }
-        });
+        $(".icon").draggable();
 
 
-
-        const mouseUp = () => {
-            // clickUp.play()
-        };
         const mouseDown = (e) => {
 
             $('.icons').removeClass("selected");
@@ -25,7 +17,7 @@
         };
 
         $(document).on('mousedown', mouseDown)
-        $(document).on('mouseup', mouseUp)
+        // $(document).on('mouseup', mouseUp)
 
         $(".icon").on("mouseup", function () {
 
@@ -34,6 +26,8 @@
 </script>
 <!-- file.png -->
 
-<div id="FileIcon" class="icon empty">
-    <span class="text">file.png</span>
+<div class="icon-wrapper">
+    <div class="icon empty">
+        <span class="text">file.png</span>
+    </div>
 </div>
