@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 html {
     box-sizing: border-box;
     height: 100%;
@@ -21,3 +25,45 @@ body {
 :focus {
     outline: none;
 }
+
+*::selection {
+    background-color: transparent;
+    // color: white;
+}
+
+// ---- Text -----
+
+* {
+    font-family: terminal;
+}
+
+// h1, h2, h3, h4, h5 {
+//   font-weight: normal;
+// }
+
+// h1 {
+//   // margin-bottom: -10px;
+//   font-family: Silom;
+// }
+
+// hr {
+//   margin: 10px 0;
+// }
+// p {
+//  font-size: 1.3rem;
+//  font-weight: 100;
+//  font-family: Arial;
+// }
+
+// li {
+//   font-size: 17px;
+//   margin: 5px 0;
+// }
+
+// code {
+//   display: block;
+//   padding: 1rem;
+//   margin: 1rem;
+//   font-family: Courier New;
+//   background: #ddd;
+// }

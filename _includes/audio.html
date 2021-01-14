@@ -1,13 +1,21 @@
 <audio controls preload="auto" id="ClickDownSound" style="display:none;">
     <source src="/assets/sounds/click_down.mp3" type="audio/mpeg">
 </audio>
+<audio controls preload="auto" id="ClickUpSound" style="display:none;">
+    <source src="/assets/sounds/click_up.mp3" type="audio/mpeg">
+</audio>
 
 <script>
     var clickDownSound = document.getElementById("ClickDownSound");
-    clickDownSound.volume = 0.2;
-    clickDownSound.load();
+    var clickUpSound = document.getElementById("ClickUpSound");
 
-    $(document).on('mousedown', function () {
-        clickDownSound.play();
-    })
+
+    clickDownSound.volume = 0.2;
+    clickUpSound.volume = 0.2;
+
+
+    clickDownSound.load();
+    clickUpSound.load();
+
+
 </script>

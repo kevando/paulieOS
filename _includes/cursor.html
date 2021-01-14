@@ -1,22 +1,11 @@
 <div id="Paulie">
     <img src="/assets/images/paulie/face-smirk.svg" id="Face" class="face" />
-    <div class="body"></div>
+    <img src="/assets/images/paulie/body.svg" class="body" />
+    <img src="/assets/images/paulie/body-shadow.svg" class="shadow" />
+
 </div>
 
-
 <script>
-
-    // var clickDown = createSound("click_down.mp3", function () {
-    //     console.log("mp3 ready")
-    // })
-    var clickUp = createSound("click_up.mp3")
-
-    clickUp.volume = 0.2;
-
-
-    clickUp.load();
-
-
     var $paulie = $("#Paulie");
 
     $(function () {
@@ -28,55 +17,103 @@
         const WIDTH = lerp(MIN_WIDTH, MAX_WIDTH, SCALE)
         const HEIGHT = WIDTH * 1.5833333;
 
-        const ICON_SIZE = lerp(60, 60, SCALE);
+        const ICON_SIZE = lerp(30, 60, SCALE);
         const BORDER_WIDTH = lerp(2, 4, SCALE);
         const FONT_SIZE = lerp(12, 18, SCALE);
 
         $('.icon').width(ICON_SIZE).height(ICON_SIZE).css("borderWidth", Math.round(BORDER_WIDTH));
         $('.icon .text').css("fontSize", Math.round(FONT_SIZE))
 
-
-
-
         $paulie.width(WIDTH)
         $paulie.height(HEIGHT)
 
-
         var clicking = false;
-
 
         // Let everyone knowthey an adjust their size now
         var evt = new CustomEvent("scaled", { detail: { scale: SCALE } });
         window.dispatchEvent(evt);
 
+        $paulie.setTranslate = function (x, y) {
+            $(this).css("transform", `translate(${x}px, ${y}px)`)
+        }
 
-        $paulie.move = (e) => {
-            $paulie.css("transform", `translate(${e.clientX}px, ${e.clientY}px)`)
+        const move = (e) => {
+
+            $paulie.setTranslate(e.pageX, e.pageY)
         }
 
         const mouseUp = () => {
-            clickUp.play()
-            clicking = false;
-            $paulie.removeClass("clicking");
+            if (event.which === 1) {
+                // Left Click
+                clickUpSound.play()
+                clicking = false;
+                $paulie.removeClass("clicking");
+            }
+            if (event.which === 3) {
+                // Right Click
+            }
+
+
         };
         const mouseDown = (e) => {
-
-            $(".icon").removeClass("selected");
-            clicking = true;
-            $paulie.addClass("clicking");
+            if (event.which === 1) {
+                // Left Click
+                clickDownSound.play();
+                $(".icon").removeClass("selected");
+                clicking = true;
+                $paulie.addClass("clicking");
+            }
+            if (event.which === 3) {
+                // Right Click
+            }
 
         };
-
         $(document).on('mousedown', mouseDown)
         $(document).on('mouseup', mouseUp)
-        $(document).on('mousemove', $paulie.move);
+        $(document).on('mousemove', move);
 
 
+        // // prevent right clicks
+        // document.addEventListener('contextmenu', event => {
 
-        // prevent right clicks
-        document.addEventListener('contextmenu', event => event.preventDefault());
+        //     event.preventDefault()
+        //     return false;
+        // });
 
+        // window.addEventListener('contextmenu', function (ev) {
 
+        //     ev.preventDefault();
+        //     return false;
+        // }, false);
+
+        // Scroll Crap
+
+        $(document).on('mousemove', captureMousePosition);
+
+        var xMousePos = 0;
+        var yMousePos = 0;
+        var lastScrolledLeft = 0;
+        var lastScrolledTop = 0;
+
+        $(".ui.window .content").scroll(function (e) {
+            if (lastScrolledLeft != $(this).scrollLeft()) {
+                xMousePos -= lastScrolledLeft;
+                lastScrolledLeft = $(this).scrollLeft();
+                xMousePos += lastScrolledLeft;
+            }
+            if (lastScrolledTop != $(this).scrollTop()) {
+                yMousePos -= lastScrolledTop;
+                lastScrolledTop = $(this).scrollTop() * 0.4;
+                yMousePos += lastScrolledTop;
+
+            }
+            $paulie.setTranslate(xMousePos, yMousePos); // Look I'm scrolling!
+        });
+
+        function captureMousePosition(event) {
+            xMousePos = event.pageX;
+            yMousePos = event.pageY;
+        }
 
 
     })

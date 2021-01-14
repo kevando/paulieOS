@@ -34,6 +34,7 @@
     position: absolute;
     display: flex;
     flex-direction: column;
+    
 
     @extend .scroll;
 
@@ -76,6 +77,9 @@
         border: $border;
         background: $red;
         margin: 0 10px;
+        &:hover {
+            background-color: lighten($red,20%);
+        }
     }
 
     .ui-icon-gripsmall-diagonal-se {
@@ -84,35 +88,57 @@
 }
 
 .ui-resizable-helper {
-    border: 3px dashed #888;
+    border: 3px dashed black;
 }
+
+.ui-resizable-se {
+    transform: scale(1.3);
+    right: 3px;
+    bottom: 3px;
+}
+
+.ui.window.previewResize {
+
+    .header {
+        border-top-style: dashed;
+    }
+    .content {
+        border-left-style: dashed;
+        border-right-style: dashed;
+        border-bottom-style: dashed;
+    }
+
+}
+
 
 // ---------------
 //     Icons
 // ---------------
 
-.icon.empty {
+.icon-wrapper {
     position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: solid 3px black;
-    border-radius: 5px;
 
-    span.text {
-        margin-top: 90px;
-        text-align: center;
-        padding: 3px 8px;
+    .icon.empty {
+        border: solid 3px black;
+        border-radius: 5px;
+
+        span.text {
+            text-align: center;
+            padding: 3px 8px;
+        }
     }
-}
 
-.icon.selected {
-    border: 2px solid #2962ff;
+    .icon.selected {
+        border: 2px solid #2962ff;
 
-    span.text {
-        background: $blue;
-        color: white;
+        span.text {
+            background: $blue;
+            color: white;
+        }
+        // svg { fill: $blue; }
     }
-    // svg { fill: $blue; }
 }

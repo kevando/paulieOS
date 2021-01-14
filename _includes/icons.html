@@ -4,7 +4,7 @@
 
         // --- Desktop Icons ---
 
-        $(".icon").draggable();
+        $(".icon-wrapper").draggable();
 
 
         const mouseDown = (e) => {
@@ -21,13 +21,14 @@
 
         $(".icon").on("mouseup", function () {
 
-        })
+        });
+        $("#FileIcon").css("right","70%").css("bottom","30%")
     })
 </script>
 <!-- file.png -->
 
-<div class="icon-wrapper">
+<div class="icon-wrapper" id="FileIcon">
     <div class="icon empty">
-        <span class="text">file.png</span>
     </div>
+    <span class="text">file.png</span>
 </div>
