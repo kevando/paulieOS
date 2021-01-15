@@ -1,54 +1,143 @@
+<script type="text/javascript">
+	// autoScrollSize [true|false] (default: true)
+	// automatically calculate scrollbar size depending on container/content size
+	// autoUpdate [true|false] (default: true)
+	// automatically update scrollbar if container/content size is changed
+	// disableBodyScroll [true|false] (default: false)
+	// if this option is enabled and the mouse is over the scrollable container, the main page won't be scrolled
+	// duration [ms] (default: 200)
+	// scroll speed duration when the mouse is over scrollbar (scroll emulating mode)
+	// ignoreMobile [true|false] (default: false)
+	// do not initialize custom scrollbars on mobile devices
+	// ignoreOverlay [true|false] (default: false)
+	// do not initialize custom scrollbars in browsers when native scrollbars overlay content (Mac OS, mobile devices, etc...)
+	// scrollStep [px] (default: 30)
+	// showArrows [true|false] (default: false)
+	// stepScrolling [true|false] (default: true)
+	// scrollx [string|element] (default: simple)
+	// scrolly [string|element] (default: simple)
+	// onDestroy [function] (default: null)
+	// onInit [function] (default: null)
+	// onScroll [function] (default: null)
+
+	// onUpdate [function] (default: null)
 
 
-<!-- Netsurf Window -->
+	const dragDefaults = {
+		handle: '.header',
+		containment: "body",
+		cursor: "none"
+	}
 
-<div id="Netsurf" class="ui window">
-    <div class="close"></div>
-    <h3 class="header">netSurf</h3>
-    <div class="content">
+	$(function () {
 
-        <h3>catchin' a wave?</h3>
-        <h1>🤙</h1>
+		// // LOAD DISK
 
-        <p>you found the right spot</p>
-
-        <hr />
-
-        <h4>🏄 🏄 🏄 🏄 🏄 🏄 </h4>
-
-        <p>time to see if i overflow. is the wave too big for me in this window?? </p>
+		$("#LoadDisk").draggable(dragDefaults);
+		$("#LoadDisk").resizable({ helper: "ui-resizable-helper", minWidth: 200, minHeight: 250, maxHeight: 600, maxWidth: 900 })
+		$('#LoadDisk .content').scrollbar();
 
 
-    </div>
+		$("#NetSurf").draggable(dragDefaults);
+		$("#NetSurf").resizable({ helper: "ui-resizable-helper", minWidth: 200, minHeight: 250, maxHeight: 600, maxWidth: 900 })
+		$('#NetSurf .content').scrollbar({
+			"autoScrollSize": false,
+			"onInit": function(e) {
+				// console.log("e",e)
+				// "scrolly": ""
+			}
+		});
+	});
+
+</script>
+
+
+
+<div class="ui window" id="NetSurf" style="width: 300px;height: 200px;">
+
+	<div class="header system border">
+		<div class="close system border"></div>
+		<span class="system text">netsurf</span>
+	</div>
+
+
+	<div class="scrollbar-chrome content">
+		<p class="permanent">
+			Google Chrome scrollbar
+		</p>
+		
+
+
+	</div>
 </div>
 
-<!-- QR Window -->
+<div class="ui window" id="LoadDisk" style="width: 300px;height: 200px;right:10%">
 
-<div id="QuantumRectangle" class="ui window">
-    <div class="close"></div>
-    <h3 class="header">Quantum Rectangle</h3>
-    <div class="content">
-        <img src="/assets/images/qr.png" width="400" />
+	<div class="header system border">
+		<div class="close system border"></div>
+		<span class="system text">load disk</span>
+	</div>
 
-    </div>
+
+	<div class="scrollbar-chrome content">
+		<p class="permanent">
+			Google Chrome scrollbar
+		</p>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,
+			scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.
+			Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel
+			hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,
+			pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam
+			sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,
+			ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget
+			nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam
+			viverra nisi, in interdum massa nibh nec erat.
+		</p>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,
+			scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.
+			Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel
+			hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,
+			pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam
+			sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,
+			ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget
+			nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam
+			viverra nisi, in interdum massa nibh nec erat.
+		</p>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,
+			scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.
+			Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel
+			hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,
+			pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam
+			sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,
+			ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget
+			nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam
+			viverra nisi, in interdum massa nibh nec erat.
+		</p>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,
+			scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.
+			Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel
+			hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,
+			pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam
+			sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,
+			ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget
+			nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam
+			viverra nisi, in interdum massa nibh nec erat.
+		</p>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,
+			scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.
+			Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel
+			hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,
+			pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam
+			sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,
+			ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget
+			nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam
+			viverra nisi, in interdum massa nibh nec erat.
+		</p>
+
+	</div>
 </div>
-
-<!-- hello -->
-
-
-<div id="SystemHello" class="ui window">
-    <div class="close"></div>
-    <h3 class="header">System Alert</h3>
-    <div class="content">
-        <p><strong>Where did paulie go?!</strong></p>
-
-        <p>Dont worry, dont worry. everyon just calm down. paulie is fine. he just helped too much and needed a break.
-            he's just in the file DIRECTORY. </p>
-
-        <p>no need to panic. he will be back in about an hour. just like you remembered him. perhaps even better than
-            you remember.</p>
-
-        <p> thanks, kevin <br />assistant to the update manager</p>
-    </div>
-</div>
-

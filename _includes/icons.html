@@ -1,34 +1,43 @@
 <script>
 
-    $(function () {
-
-        // --- Desktop Icons ---
-
-        $(".icon-wrapper").draggable();
 
 
-        const mouseDown = (e) => {
+	// Simple Draggable Desktop Icons
+	const SMALL_SCREEN = 900;
+	const LARGE_SCREEN = 2000;
 
-            $('.icons').removeClass("selected");
-            if ($(e.target).hasClass("icon")) {
-                $(e.target).addClass("selected");
-            }
+	const SCALE = invlerp(SMALL_SCREEN, LARGE_SCREEN, document.body.clientWidth);
 
-        };
+	const ICON_SIZE = lerp(30, 60, SCALE);
 
-        $(document).on('mousedown', mouseDown)
-        // $(document).on('mouseup', mouseUp)
+	const FONT_SIZE = Math.round(lerp(12, 18, SCALE));
 
-        $(".icon").on("mouseup", function () {
+	$('.icon').width(ICON_SIZE).height(ICON_SIZE + 30)
 
-        });
-        $("#FileIcon").css("right","70%").css("bottom","30%")
-    })
+	$('.icon .image').width(ICON_SIZE).height(ICON_SIZE)
+	$('.icon .text').css("fontSize", FONT_SIZE);
+
+	// $('.icon .image').css("borderWidth", 10)
+
+	$(function () {
+		$(".icon").draggable();
+
+		$("#Desktop").on('mousedown', function (e) {
+			$('.icon').removeClass("selected");
+			if ($(e.target).parent().hasClass('icon'))
+			{
+				$(e.target).parent().addClass('selected')
+			}
+		});
+	})
 </script>
+
+
 <!-- file.png -->
 
-<div class="icon-wrapper" id="FileIcon">
-    <div class="icon empty">
-    </div>
-    <span class="text">file.png</span>
+<div class="icons">
+	<div class="icon system-border system-icon" id="FileIcon" style="left:20%;bottom:20%">
+		<div class="image empty"></div>
+		<span class="text">file.png</span>
+	</div>
 </div>

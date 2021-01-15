@@ -17,12 +17,6 @@
         const WIDTH = lerp(MIN_WIDTH, MAX_WIDTH, SCALE)
         const HEIGHT = WIDTH * 1.5833333;
 
-        const ICON_SIZE = lerp(30, 60, SCALE);
-        const BORDER_WIDTH = lerp(2, 4, SCALE);
-        const FONT_SIZE = lerp(12, 18, SCALE);
-
-        $('.icon').width(ICON_SIZE).height(ICON_SIZE).css("borderWidth", Math.round(BORDER_WIDTH));
-        $('.icon .text').css("fontSize", Math.round(FONT_SIZE))
 
         $paulie.width(WIDTH)
         $paulie.height(HEIGHT)
@@ -59,7 +53,7 @@
             if (event.which === 1) {
                 // Left Click
                 clickDownSound.play();
-                $(".icon").removeClass("selected");
+                // $(".icon").removeClass("selected");
                 clicking = true;
                 $paulie.addClass("clicking");
             }
