@@ -2,31 +2,20 @@
 
 
 
-	// Simple Draggable Desktop Icons
-	const SMALL_SCREEN = 900;
-	const LARGE_SCREEN = 2000;
 
-	const SCALE = invlerp(SMALL_SCREEN, LARGE_SCREEN, document.body.clientWidth);
-
-	const ICON_SIZE = lerp(30, 60, SCALE);
-
-	const FONT_SIZE = Math.round(lerp(12, 18, SCALE));
-
-	$('.icon').width(ICON_SIZE).height(ICON_SIZE + 30)
-
-	$('.icon .image').width(ICON_SIZE).height(ICON_SIZE)
-	$('.icon .text').css("fontSize", FONT_SIZE);
 
 	// $('.icon .image').css("borderWidth", 10)
 
 	$(function () {
+
+
 		$(".icon").draggable();
 
 		$("#Desktop").on('mousedown', function (e) {
 			$('.icon').removeClass("selected");
-			if ($(e.target).parent().hasClass('icon'))
+			if ($(e.target).hasClass('icon'))
 			{
-				$(e.target).parent().addClass('selected')
+				$(e.target).addClass('selected')
 			}
 		});
 	})
@@ -35,9 +24,7 @@
 
 <!-- file.png -->
 
-<div class="icons">
-	<div class="icon system-border system-icon" id="FileIcon" style="left:20%;bottom:20%">
-		<div class="image empty"></div>
-		<span class="text">file.png</span>
-	</div>
+
+<div class="icon system-border system-icon empty" id="FileIcon" style="left:20%;bottom:20%">
+	<span class="text">file.png</span>
 </div>

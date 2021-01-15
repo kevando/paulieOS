@@ -3,23 +3,20 @@
 const min = 2;
 const max = 6;
 
-const size = 2;
+const size = 4;
 
 var system = {
-	UI: {
-		size: 2,
-		fontSize: 12,
-		headerHeight: 24,
-		closeSize: 12, // margin: 4
-	},
 
-	scale: invlerp(2, 5,),
+	// scale: invlerp(2, 5,),
 	sizes: {
 		border: range(min, max, 2, 6, size),
-		font: range(min, max, 12, 14, size)
+		font: range(min, max, 12, 22, size),
+		icon: 40
 	}
 
 }
+
+
 
 
 function initialize()
@@ -29,11 +26,13 @@ function initialize()
 	$('.system.text').css("fontSize", system.sizes.font);
 
 	$('.ui.window .content').css('fontSize', system.sizes.font)
+	$('.icon .text').css("fontSize", system.sizes.font);
 
 	$('.close').css('width', `+=${size - 2}`)
 	$('.close').css('height', `+=${size - 2}`)
 
-
+	$('.icon').width(system.sizes.icon).height(system.sizes.icon)
+	
 }
 
 
