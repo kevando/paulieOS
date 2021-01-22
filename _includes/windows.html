@@ -31,68 +31,49 @@
 
 	$(function () {
 
-
+		// (QR) Quantum Rectangle
 		$("#QuantumRectangle").draggable(dragDefaults);
 		$("#QuantumRectangle").resizable({ helper: "ui-resizable-helper", minWidth: 200, minHeight: 200, maxHeight: 600, maxWidth: 900 })
 		$('#QuantumRectangle .scrollbar-inner').scrollbar();
 
-		// // LOAD DISK
-
+		// Load Disk
 		$("#LoadDisk").draggable(dragDefaults);
 		$("#LoadDisk").resizable({ helper: "ui-resizable-helper", minWidth: 200, minHeight: 200, maxHeight: 600, maxWidth: 900 })
 		$('#LoadDisk .scrollbar-inner').scrollbar();
 
-
+		// Netsurf		
 		$("#NetSurf").draggable(dragDefaults);
 		$("#NetSurf").resizable({ helper: "ui-resizable-helper", minWidth: 200, minHeight: 250, maxHeight: 600, maxWidth: 900 })
-		$('#NetSurf .content').scrollbar({
-			"autoScrollSize": false,
-			"onInit": function (e) {
-				// console.log("e",e)
-				// "scrolly": ""
-			}
-		});
+		$('#NetSurf .content').scrollbar({ "autoScrollSize": false });
 	});
 
 </script>
 
 
-<div id="QuantumRectangle" class="ui window" style="width: 200px;height:200px;bottom:10%;left:10%;z-index:900;">
+<div id="QuantumRectangle" class="ui window" style="width: 200px;height:200px;bottom:10%;left:50%;z-index:900;">
 
-	<div class="header system border">
-		<div class="close system border"></div>
-		<span class="system text">Quantum Rectangle</span>
+	<div class="ui header system border">
+		<div class="ui close system border"></div>
+		<span class="ui system text">Quantum Rectangle</span>
 	</div>
 
-
-	<div class="scroll-baby system border">
-
-
-		<div class="scrollbar-inner">
+	<div class="scroll-baby system border ui">
+		<div class="scrollbar-inner ui">
 			<img src="/assets/images/qr.png" width="400" />
 		</div>
-
 	</div>
+
 </div>
-
-
-
 
 <div class="ui window" id="LoadDisk" style="width: 300px;height:300px;top:10%;left:10%">
 
-
-	<div class="header system border">
-		<div class="close system border"></div>
-		<span class="system text">netsurf</span>
+	<div class="ui header system border">
+		<div class="ui close system border"></div>
+		<span class="ui system text">netsurf</span>
 	</div>
 
-
-	<div class="scroll-baby system border">
-
-
-		<div class="scrollbar-inner">
-
-
+	<div class="ui scroll-baby system border">
+		<div class="ui scrollbar-inner">
 			<p>
 				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,
 				scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.
@@ -128,31 +109,23 @@
 			</p>
 		</div>
 	</div>
-
-
 </div>
 
 
 
 <div class="ui window" id="NetSurf" style="width: 300px;height: 200px;right:10%">
 
-	<div class="header system border">
-		<div class="close system border"></div>
-		<span class="system text">netsurf</span>
+	<div class="ui header system border">
+		<div class="ui close system border"></div>
+		<span class="ui  system text">netsurf</span>
 	</div>
 
-
-	<div class="scroll-baby system border">
-
-
-		<div class="scrollbar-inner">
-			
+	<div class="ui scroll-baby system border">
+		<div class="ui scrollbar-inner">
 			{% for window in site.windows %}
-{{ window.content | markdownify }}
-{% endfor %}
-
+			{{ window.content | markdownify }}
+			{% endfor %}
 		</div>
 	</div>
 
 </div>
-

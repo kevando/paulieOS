@@ -32,7 +32,7 @@ function initialize()
 	$('.close').css('height', `+=${size - 2}`)
 
 	$('.icon').width(system.sizes.icon).height(system.sizes.icon)
-	
+
 }
 
 
@@ -69,23 +69,6 @@ $(function ()
 
 	// $(document).on('mousedown', mouseDown)
 	// $(document).on('mouseup', mouseUp)
-
-	// -------- Draggables ------------
-
-
-
-	document.addEventListener("ondrag", function (e)
-	{
-		console.log("drag doc")
-
-	}, false);
-
-	window.addEventListener("ondrag", function (e)
-	{
-		console.log("drag wind")
-
-	}, false);
-
 
 
 	$("#Desktop").on("click", function (event)

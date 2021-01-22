@@ -98,7 +98,7 @@ $close: #ff0000;
 }
 
 .ui-resizable-helper {
-	border: 3px dashed lighten($content, 40%);
+	border: 3px dashed darken($content, 30%);
 }
 
 .ui-resizable-se {

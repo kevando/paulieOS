@@ -7,70 +7,88 @@ body,
 .ui-resizable-w,
 .ui-resizable-sw,
 #Paulie {
-    cursor: none!important;
+	cursor: none !important;
 }
 
 #Paulie {
-    position: absolute;
-    z-index: 100;
-    // perspective: 100px;
-    top: 0px;
-    left: -2px;
-    pointer-events: none;
+	position: absolute;
+	z-index: 100;
+	// perspective: 100px;
+	top: 0px;
+	left: -2px;
+	pointer-events: none;
 
-    img.face {
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        width: 100%;
-        height: 100%;
-        z-index: 200;
+	img.face {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		height: 100%;
+		z-index: 200;
+		@include transition(all 100ms ease-out);
+	}
 
-        @include transition(all 100ms ease-out);
-    }
+	img.body {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		height: 100%;
+		z-index: 100;
+		@include transition(all 100ms ease-out);
+		filter: $shadow;
+		&.thiccc {
+			display: none;
+		}
+	}
+	img.shadow {
+		position: absolute;
+		top: 9px;
+		left: -7px;
+		opacity: 0.6;
+		width: 100%;
+		height: 100%;
+		@include transition(all 100ms ease-out);
+	}
 
-    img.body {
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        width: 100%;
-        height: 100%;
-        // background: url(/assets/svg/paulie-blank.svg) no-repeat;
-        z-index: 100;
-        @include transition(all 100ms ease-out);
-    }
-    img.shadow {
-        position: absolute;
-        top: 9px;
-        left: -7px;
-        opacity: 0.6;
-        width: 100%;
-        height: 100%;
-        @include transition(all 100ms ease-out);
-    }
-
-    &::selection {
-        background-color: transparent;
-    }
+	&::selection {
+		background-color: transparent;
+	}
 }
 
 #Paulie {
-    &.clicking {
-        .face {
-            top: -3px;
-            left: -2px;
-            @include transform(scale(0.98));
-        }
-        .body {
-            top: -3px;
-            left: -2px;
+	&.clicking {
+		.face {
+			top: -3px;
+			left: -2px;
+			@include transform(scale(0.98));
+		}
+		.body {
+			top: -3px;
+			left: -2px;
 
-            @include transform(scale(0.98));
-        }
-        .shadow {
-            top: -3px;
-            left: -2px;
-            @include transform(scale(0.98));
-        }
-    }
+			@include transform(scale(0.98));
+		}
+		.shadow {
+			top: -3px;
+			left: -2px;
+			@include transform(scale(0.98));
+		}
+	}
+}
+
+#Desktop.thiccc {
+	img.face {
+		display: none;
+	}
+
+	img.body {
+		display: none;
+		&.thiccc {
+			display: block;
+		}
+	}
+	img.shadow {
+		display: none;
+	}
 }

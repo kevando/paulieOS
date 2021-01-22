@@ -1,20 +1,21 @@
 <script>
 
-
-
-
-
-	// $('.icon .image').css("borderWidth", 10)
-
 	$(function () {
-
 
 		$(".icon").draggable();
 
 		$("#Desktop").on('mousedown', function (e) {
-			$('.icon').removeClass("selected");
+
+
+			if (!$(e.target).hasClass('ui') && !$(e.target).parent().hasClass('ui'))
+			{
+				$('.icon').removeClass("selected");
+				$("#Desktop").removeClass("thiccc");
+			}
+
 			if ($(e.target).hasClass('icon'))
 			{
+				$("#Desktop").addClass("thiccc");
 				$(e.target).addClass('selected')
 			}
 		});
@@ -26,5 +27,5 @@
 
 
 <div class="icon system-border system-icon empty" id="FileIcon" style="left:20%;bottom:20%">
-	<span class="text">file.png</span>
+	<span class="text">thiccc.png</span>
 </div>
