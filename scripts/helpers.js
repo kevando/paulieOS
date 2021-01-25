@@ -5,10 +5,12 @@ const clamp = (a, min = 0, max = 1) => Math.min(max, Math.max(min, a));
 const invlerp = (x, y, a) => clamp((a - x) / (y - x));
 const range = (x1, y1, x2, y2, a) => lerp(x2, y2, invlerp(x1, y1, a));
 
-function randomRange(min, max) {
+function randomRange(min, max)
+{
 	return min + Math.random() * (max - min);
 }
-function randomInt(min, max) {
+function randomInt(min, max)
+{
 	var diff = max - min;
 	var rand = Math.random() * diff;
 
@@ -17,7 +19,8 @@ function randomInt(min, max) {
 	return Math.floor(rand);
 }
 
-function setCookie(name, value, days) {
+function setCookie(name, value, days)
+{
 	var expires = "";
 	if (days) {
 		var date = new Date();
@@ -26,7 +29,8 @@ function setCookie(name, value, days) {
 	}
 	document.cookie = name + "=" + (value || "") + expires + "; path=/";
 }
-function getCookie(name) {
+function getCookie(name)
+{
 	var nameEQ = name + "=";
 	var ca = document.cookie.split(';');
 	for (var i = 0; i < ca.length; i++) {
@@ -36,12 +40,14 @@ function getCookie(name) {
 	}
 	return null;
 }
-function eraseCookie(name) {
+function eraseCookie(name)
+{
 	document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
 
 
-function createSound(filename, callback = function () { }) {
+function createSound(filename, callback = function () { })
+{
 
 	var src = "/assets/sounds/" + filename;
 
@@ -54,7 +60,8 @@ function createSound(filename, callback = function () { }) {
 	document.body.appendChild(sound);
 
 
-	sound.addEventListener('loadeddata', function () {
+	sound.addEventListener('loadeddata', function ()
+	{
 
 		if (sound.readyState >= 2) {
 			// sound.play();
@@ -66,7 +73,8 @@ function createSound(filename, callback = function () { }) {
 
 }
 
-function getOS() {
+function getOS()
+{
 	var userAgent = window.navigator.userAgent,
 		platform = window.navigator.platform,
 		macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
@@ -89,7 +97,8 @@ function getOS() {
 	return os;
 }
 
-function isOSValid() {
+function isOSValid()
+{
 	var userAgent = window.navigator.userAgent,
 		platform = window.navigator.platform,
 		macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],

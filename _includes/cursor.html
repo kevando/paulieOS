@@ -1,115 +1,57 @@
 <div id="Paulie">
-    <img src="/assets/images/paulie/face-smirk.svg" id="Face" class="face" />
-    <img src="/assets/images/paulie/body.svg" class="body" />
-    <img src="/assets/images/paulie/body-shadow.svg" class="shadow" />
-
-	<img src="/assets/images/paulie/thiccc-1.png" class="thiccc body" />
+	<img src="/assets/images/paulie/thiccc-body.svg" class="thiccc body" />
+	<img src="/assets/images/paulie/thiccc-shadow.png" class="thiccc shadow" />
 </div>
 
 <script>
-    var $paulie = $("#Paulie");
 
-    $(function () {
+	$(function () {
 
-        const MIN_WIDTH = 40; // SCALE = 0
-        const MAX_WIDTH = 70; // SCALE = 1
-        const SCALE = range(900, 2000, 0, 1, document.body.clientWidth);
+		
+		// // prevent right clicks
+		// document.addEventListener('contextmenu', event => {
 
-        const WIDTH = lerp(MIN_WIDTH, MAX_WIDTH, SCALE)
-        const HEIGHT = WIDTH * 1.5833333;
+		//     event.preventDefault()
+		//     return false;
+		// });
 
+		// window.addEventListener('contextmenu', function (ev) {
 
-        $paulie.width(WIDTH)
-        $paulie.height(HEIGHT)
+		//     ev.preventDefault();
+		//     return false;
+		// }, false);
 
-        var clicking = false;
+		// Scroll Crap
 
-        // Let everyone knowthey an adjust their size now
-        var evt = new CustomEvent("scaled", { detail: { scale: SCALE } });
-        window.dispatchEvent(evt);
+		// $(document).on('mousemove', captureMousePosition);
 
-        $paulie.setTranslate = function (x, y) {
-            $(this).css("transform", `translate(${x}px, ${y}px)`)
-        }
+		// var xMousePos = 0;
+		// var yMousePos = 0;
+		// var lastScrolledLeft = 0;
+		// var lastScrolledTop = 0;
 
-        const move = (e) => {
+		// $(".ui.window .content").scroll(function (e) {
+		// 	if (lastScrolledLeft != $(this).scrollLeft())
+		// 	{
+		// 		xMousePos -= lastScrolledLeft;
+		// 		lastScrolledLeft = $(this).scrollLeft();
+		// 		xMousePos += lastScrolledLeft;
+		// 	}
+		// 	if (lastScrolledTop != $(this).scrollTop())
+		// 	{
+		// 		yMousePos -= lastScrolledTop;
+		// 		lastScrolledTop = $(this).scrollTop() * 0.4;
+		// 		yMousePos += lastScrolledTop;
 
-            $paulie.setTranslate(e.pageX, e.pageY)
-        }
+		// 	}
+		// 	$paulie.setTranslate(xMousePos, yMousePos); // Look I'm scrolling!
+		// });
 
-        const mouseUp = () => {
-            if (event.which === 1) {
-                // Left Click
-                clickUpSound.play()
-                clicking = false;
-                $paulie.removeClass("clicking");
-            }
-            if (event.which === 3) {
-                // Right Click
-            }
-
-
-        };
-        const mouseDown = (e) => {
-            if (event.which === 1) {
-                // Left Click
-                clickDownSound.play();
-                // $(".icon").removeClass("selected");
-                clicking = true;
-                $paulie.addClass("clicking");
-            }
-            if (event.which === 3) {
-                // Right Click
-            }
-
-        };
-        $(document).on('mousedown', mouseDown)
-        $(document).on('mouseup', mouseUp)
-        $(document).on('mousemove', move);
+		// function captureMousePosition(event) {
+		// 	xMousePos = event.pageX;
+		// 	yMousePos = event.pageY;
+		// }
 
 
-        // // prevent right clicks
-        // document.addEventListener('contextmenu', event => {
-
-        //     event.preventDefault()
-        //     return false;
-        // });
-
-        // window.addEventListener('contextmenu', function (ev) {
-
-        //     ev.preventDefault();
-        //     return false;
-        // }, false);
-
-        // Scroll Crap
-
-        $(document).on('mousemove', captureMousePosition);
-
-        var xMousePos = 0;
-        var yMousePos = 0;
-        var lastScrolledLeft = 0;
-        var lastScrolledTop = 0;
-
-        $(".ui.window .content").scroll(function (e) {
-            if (lastScrolledLeft != $(this).scrollLeft()) {
-                xMousePos -= lastScrolledLeft;
-                lastScrolledLeft = $(this).scrollLeft();
-                xMousePos += lastScrolledLeft;
-            }
-            if (lastScrolledTop != $(this).scrollTop()) {
-                yMousePos -= lastScrolledTop;
-                lastScrolledTop = $(this).scrollTop() * 0.4;
-                yMousePos += lastScrolledTop;
-
-            }
-            $paulie.setTranslate(xMousePos, yMousePos); // Look I'm scrolling!
-        });
-
-        function captureMousePosition(event) {
-            xMousePos = event.pageX;
-            yMousePos = event.pageY;
-        }
-
-
-    })
+	})
 </script>

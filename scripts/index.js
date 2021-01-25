@@ -1,4 +1,14 @@
 
+const PAULIE_ASPECT_RATIO = 1.410256
+const PAULIE_WIDTH_MIN = 40; // SCALE = 0
+const PAULIE_WIDTH_MAX = 70; // SCALE = 1
+
+const COMPUTED_SCALE = invlerp(900, 2000, document.body.clientWidth);
+
+const PAULIE_WIDTH = lerp(PAULIE_WIDTH_MIN, PAULIE_WIDTH_MAX, COMPUTED_SCALE)
+const PAULIE_HEIGHT = PAULIE_WIDTH * PAULIE_ASPECT_RATIO;
+
+
 
 const min = 2;
 const max = 6;
@@ -17,65 +27,69 @@ var system = {
 }
 
 
+const BORDER_WIDTH = 3;//range(min, max, 2, 6, size)
 
-
-function initialize()
-{
-
-	$('.system.border').css("borderWidth", system.sizes.border);
-	$('.system.text').css("fontSize", system.sizes.font);
-
-	$('.ui.window .content').css('fontSize', system.sizes.font)
-	$('.icon .text').css("fontSize", system.sizes.font);
-
-	$('.close').css('width', `+=${size - 2}`)
-	$('.close').css('height', `+=${size - 2}`)
-
-	$('.icon').width(system.sizes.icon).height(system.sizes.icon)
-
-}
 
 
 $(function ()
 {
+	var $paulie = $("#Paulie");
 
-	initialize();
+	// --------------------------
+	// Resize everything!
+	// --------------------------
+
+	$('.system.border').css("borderWidth", BORDER_WIDTH);
+	$('.system.text').css("fontSize", system.sizes.font);
+	$('.ui.window .content').css('fontSize', system.sizes.font)
+	$('.icon .text').css("fontSize", system.sizes.font);
+	$('.icon').width(system.sizes.icon).height(system.sizes.icon)
+
+	$paulie.width(PAULIE_WIDTH)
+	$paulie.height(PAULIE_HEIGHT)
 
 
-	// Sound City
+	// --------------------------
+	// Global Click Functions
+	// --------------------------
 
-
-	var clickBad = createSound("click_bad.mp3")
-	var fart = createSound("fart.mp3")
-	var wakeUp = createSound("paulie_wake_up.mp3")
-
-
-	fart.load();
-	wakeUp.load();
-
-
-	// ---- Click Town ----
-
+	const mousemove = (e) =>
+	{
+		$paulie.setTranslate(e.pageX, e.pageY)
+	};
 	const mouseUp = () =>
 	{
-		// clickUp.play()
+		clickUpSound.play()
+		$paulie.isClicking = false;
+		$paulie.removeClass("clicking");
 	};
 	const mouseDown = (e) =>
 	{
-		// clickDown.play();
-		$(".icon").removeClass("selected");
-
+		clickDownSound.play();
+		$paulie.isClicking = true;
+		$paulie.addClass("clicking");
 	};
 
-	// $(document).on('mousedown', mouseDown)
-	// $(document).on('mouseup', mouseUp)
+	// --------------------------
+	// Click Events
+	// --------------------------
+
+	$(document).on('mousedown', function (e) { if (e.which === 1) mouseDown(e); })
+	$(document).on('mouseup', function (e) { if (e.which === 1) mouseUp(e); })
+	$(document).on('mousemove', mousemove);
+	$('.scroll-bar').on('mousedown', function (e) { if (e.which === 1) mouseDown(e); })
 
 
-	$("#Desktop").on("click", function (event)
+	// --------------------------
+
+
+	$paulie.isClicking = false;
+
+
+	$paulie.setTranslate = function (x, y)
 	{
-		$(document).trigger("desktopClick", ["Custom", "Event"]);
-	});
-
+		$(this).css("transform", `translate(${x}px, ${y}px)`)
+	}
 
 });
 

@@ -7,9 +7,9 @@
 	overflow: hidden;
 }
 
-// ------------------
-//      Windows
-// ------------------
+// -----------------------
+//  Windows
+// -----------------------
 
 $header: #eeeeee;
 $content: #d8d8d8;
@@ -46,19 +46,25 @@ $close: #ff0000;
 		.text {
 			font-size: 12px;
 			line-height: 1.7em;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
 		}
 		.close {
+			$size: 16px;
+			width: $size !important;
+			height: $size !important;
+			min-width: $size !important;
+			min-height: $size !important;
 			z-index: 100;
-			border-radius: 10px;
-			width: 12px;
-			height: 12px;
-			border: solid 2px black;
+			border-color: black;
+			border-style: solid;
 			background: $red;
 			margin: 4px;
-			transition: 100ms;
+			@include border-radius(10px);
+			@include transition(all 100ms);
 			&:hover {
-				background-color: lighten($red, 20%);
-				transform: scale(1.2);
+				@include transform(scale(1.1));
 			}
 		}
 	}
@@ -74,25 +80,21 @@ $close: #ff0000;
 	}
 
 	.ui-icon-gripsmall-diagonal-se {
-		height: 20px;
-		width: 20px;
+		height: 8px;
+		width: 8px;
+		bottom: 8px;
+		right: 8px;
+
 		position: absolute;
 		font-size: 0.1px;
 		display: block;
+		background: url(/assets/images/icon-resize.svg) no-repeat;
+		background-size: 100%;
 
-		&::after {
-			content: "◢";
-			color: darken($content, 30%);
-			font-size: 6px;
-			width: 20px;
-			height: 20px;
-			padding: 2px 0 0 2px;
-			position: absolute;
-			top: 2px;
-			right: -5px;
-		}
-		&:hover::after {
-			color: lighten($content, 30%);
+		// filter: brightness(0.5) sepia(1) hue-rotate(-70deg) saturate(5);
+
+		&:hover {
+			filter: brightness(3);
 		}
 	}
 }

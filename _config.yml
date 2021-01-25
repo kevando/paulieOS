@@ -1,21 +1,24 @@
+
+# ---------------
+#  Site Config
+# ---------------
+
 title: PaulieOS
 description: Now is NOT the time to upgrade your OS  
 url: "https://cursor.kevaid.com"
 google_analytics: 
 
-
+# ---------------
 # Build settings
+# ---------------
+
 theme: minima
 plugins:
   - jekyll-feed
-
-
-
 sass:
-  sass_dir: _sass # All .scss partials go here
-  # style: compressed
+  sass_dir: _sass
+
 
 collections:
    windows:
-     output: true
-    
+     output: true    

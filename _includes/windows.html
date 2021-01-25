@@ -26,31 +26,40 @@
 	const dragDefaults = {
 		handle: '.header',
 		containment: "body",
-		cursor: "none"
+		cursor: "none",
+		zIndex: 12,
 	}
 
 	$(function () {
 
 		// (QR) Quantum Rectangle
 		$("#QuantumRectangle").draggable(dragDefaults);
-		$("#QuantumRectangle").resizable({ helper: "ui-resizable-helper", minWidth: 200, minHeight: 200, maxHeight: 600, maxWidth: 900 })
+		$("#QuantumRectangle").resizable({ helper: "ui-resizable-helper", minWidth: 200, minHeight: 200, maxHeight: 210, maxWidth: 210 })
 		$('#QuantumRectangle .scrollbar-inner').scrollbar();
 
 		// Load Disk
 		$("#LoadDisk").draggable(dragDefaults);
 		$("#LoadDisk").resizable({ helper: "ui-resizable-helper", minWidth: 200, minHeight: 200, maxHeight: 600, maxWidth: 900 })
-		$('#LoadDisk .scrollbar-inner').scrollbar();
+		$('#LoadDisk .scrollbar-inner').scrollbar({ "autoScrollSize": true, stepScrolling: false });
 
 		// Netsurf		
 		$("#NetSurf").draggable(dragDefaults);
 		$("#NetSurf").resizable({ helper: "ui-resizable-helper", minWidth: 200, minHeight: 250, maxHeight: 600, maxWidth: 900 })
-		$('#NetSurf .content').scrollbar({ "autoScrollSize": false });
+		$('#NetSurf .content').scrollbar({ "autoScrollSize": false, stepScrolling: false });
+
+		
+		$('.ui.header').on('click',function() {
+			$('.ui.window').css("zIndex", 10);
+			$(this).parent().css("zIndex", "+=1");
+		})
+
 	});
+
 
 </script>
 
 
-<div id="QuantumRectangle" class="ui window" style="width: 200px;height:200px;bottom:10%;left:50%;z-index:900;">
+<div id="QuantumRectangle" class="ui window" style="width: 200px;height:200px;bottom:10%;left:50%;">
 
 	<div class="ui header system border">
 		<div class="ui close system border"></div>
@@ -69,7 +78,7 @@
 
 	<div class="ui header system border">
 		<div class="ui close system border"></div>
-		<span class="ui system text">netsurf</span>
+		<span class="ui system text">load disk</span>
 	</div>
 
 	<div class="ui scroll-baby system border">
@@ -113,11 +122,11 @@
 
 
 
-<div class="ui window" id="NetSurf" style="width: 300px;height: 200px;right:10%">
+<div class="ui window" id="NetSurf" style="width:200px;height:350px;right:10%;top:10%;">
 
 	<div class="ui header system border">
 		<div class="ui close system border"></div>
-		<span class="ui  system text">netsurf</span>
+		<span class="ui  system text">netsurf --> the wookipeida.coom/poop/fresh/notsofresh</span>
 	</div>
 
 	<div class="ui scroll-baby system border">
