@@ -20,5 +20,6 @@ sass:
 
 
 collections:
-   windows:
-     output: true    
+  webpages:
+    output: true
+    permalink: /:path/

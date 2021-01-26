@@ -4,30 +4,46 @@
 }
 
 html {
-    box-sizing: border-box;
-    height: 100%;
+	box-sizing: border-box;
+	height: 100%;
 }
 
 body {
-    margin: 0;
-    height: 100%;
-    min-height: 100vh;
-    min-width: 100vw;
-    background-color: green;
-    overflow: hidden;
+	margin: 0;
+	height: 100%;
+	min-height: 100vh;
+	min-width: 100vw;
+	background-color: green;
+	overflow: hidden;
 }
 
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 :focus {
-    outline: none;
+	outline: none;
 }
 
 *::selection {
-    background-color: transparent;
-    // color: white;
+	background-color: transparent;
+	// color: white;
 }
 
+// -----------------------
+//  Links
+// -----------------------
+
+a {
+	text-decoration: none;
+	cursor: none;
+	@include transition(100ms);
+	padding: 5px;
+	margin: -5px;
+
+	&:hover {
+		text-decoration: underline;
+		color: red;
+	}
+}

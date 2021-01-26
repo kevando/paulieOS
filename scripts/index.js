@@ -1,10 +1,9 @@
 
+const COMPUTED_SCALE = invlerp(900, 2000, document.body.clientWidth);
+
 const PAULIE_ASPECT_RATIO = 1.410256
 const PAULIE_WIDTH_MIN = 40; // SCALE = 0
 const PAULIE_WIDTH_MAX = 70; // SCALE = 1
-
-const COMPUTED_SCALE = invlerp(900, 2000, document.body.clientWidth);
-
 const PAULIE_WIDTH = lerp(PAULIE_WIDTH_MIN, PAULIE_WIDTH_MAX, COMPUTED_SCALE)
 const PAULIE_HEIGHT = PAULIE_WIDTH * PAULIE_ASPECT_RATIO;
 
@@ -12,7 +11,6 @@ const PAULIE_HEIGHT = PAULIE_WIDTH * PAULIE_ASPECT_RATIO;
 
 const min = 2;
 const max = 6;
-
 const size = 4;
 
 var system = {
@@ -30,6 +28,7 @@ var system = {
 const BORDER_WIDTH = 3;//range(min, max, 2, 6, size)
 
 
+let netStack = []
 
 $(function ()
 {
@@ -78,9 +77,51 @@ $(function ()
 	$(document).on('mouseup', function (e) { if (e.which === 1) mouseUp(e); })
 	$(document).on('mousemove', mousemove);
 	$('.scroll-bar').on('mousedown', function (e) { if (e.which === 1) mouseDown(e); })
-
+	$('img').on('dragstart', function () { return false; }); // no drag
+	$('a').on('dragstart', function () { return false; }) // no drag
 
 	// --------------------------
+	// Netsurf
+	// --------------------------
+
+
+	$('body').on('click', '.ui.window .content a', function (e)
+	{
+		e.preventDefault(e);
+
+
+		var destination = $(this).attr('href');
+		console.log(destination)
+
+		netStack.push(destination);
+		$("#NetSurf button").attr('disabled', false);
+
+		var $content = $("#NetSurf .content");
+		// if (!contentParent.hasClass("content")) { contentParent = contentParent.parent(); }
+		// if (!contentParent.hasClass("content")) { contentParent = contentParent.parent(); }
+		// if (!contentParent.hasClass("content")) { contentParent = contentParent.parent(); }
+
+		$.get(destination, (data) => $content.html(data));
+	});
+
+	$('#NetSurf button').on('click', function (e)
+	{
+		e.preventDefault(e);
+		var destination = netStack.shift();
+		console.log(destination)
+
+		var $content = $("#NetSurf .content");
+
+		$.get(destination, (data) =>
+		{
+
+			console.log(data)
+			$content.html(data)
+			// $content.html("<h1>gart</h1>")
+
+		});
+	});
+
 
 
 	$paulie.isClicking = false;
