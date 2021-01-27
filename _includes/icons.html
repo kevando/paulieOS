@@ -5,19 +5,9 @@
 		$(".icon").draggable();
 
 		$("#Desktop").on('mousedown', function (e) {
-
-
-			if (!$(e.target).hasClass('ui') && !$(e.target).parent().hasClass('ui'))
-			{
-				$('.icon').removeClass("selected");
-				$("#Desktop").removeClass("thiccc");
-			}
-
-			if ($(e.target).hasClass('icon'))
-			{
-				$("#Desktop").addClass("thiccc");
-				$(e.target).addClass('selected')
-			}
+			if (!$(e.target).hasClass('ui') && !$(e.target).parent().hasClass('ui')) { $('.icon').removeClass("selected"); }
+			if ($(e.target).hasClass('icon')) { $(e.target).addClass('selected') }
+			if ($(e.target).parent().hasClass('icon')) { $(e.target).parent().addClass('selected') }
 		});
 	})
 </script>

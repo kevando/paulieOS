@@ -1,34 +1,12 @@
 
-const COMPUTED_SCALE = invlerp(900, 2000, document.body.clientWidth);
-
+const COMPUTED_SCALE = 0.8; //invlerp(900, 2000, document.body.clientWidth);
 const PAULIE_ASPECT_RATIO = 1.410256
-const PAULIE_WIDTH_MIN = 40; // SCALE = 0
-const PAULIE_WIDTH_MAX = 70; // SCALE = 1
-const PAULIE_WIDTH = lerp(PAULIE_WIDTH_MIN, PAULIE_WIDTH_MAX, COMPUTED_SCALE)
-const PAULIE_HEIGHT = PAULIE_WIDTH * PAULIE_ASPECT_RATIO;
 
+const PAULIE_WIDTH = lerp(50, 80, COMPUTED_SCALE)
+const BORDER_WIDTH = lerp(3, 6, COMPUTED_SCALE)
+const FONT_SIZE = lerp(17, 22, COMPUTED_SCALE)
+const ICON_SIZE = lerp(40, 50, COMPUTED_SCALE)
 
-
-const min = 2;
-const max = 6;
-const size = 4;
-
-var system = {
-
-	// scale: invlerp(2, 5,),
-	sizes: {
-		border: range(min, max, 2, 6, size),
-		font: range(min, max, 12, 22, size),
-		icon: 40
-	}
-
-}
-
-
-const BORDER_WIDTH = 3;//range(min, max, 2, 6, size)
-
-
-let netStack = []
 
 $(function ()
 {
@@ -39,13 +17,14 @@ $(function ()
 	// --------------------------
 
 	$('.system.border').css("borderWidth", BORDER_WIDTH);
-	$('.system.text').css("fontSize", system.sizes.font);
-	$('.ui.window .content').css('fontSize', system.sizes.font)
-	$('.icon .text').css("fontSize", system.sizes.font);
-	$('.icon').width(system.sizes.icon).height(system.sizes.icon)
+	$('.system.text').css("fontSize", FONT_SIZE);
+	$('.ui.window .content').css('fontSize', FONT_SIZE)
+	$('.icon .text').css("fontSize", FONT_SIZE);
+	$('.icon').width(ICON_SIZE);
+	$('.icon').height(ICON_SIZE);
 
 	$paulie.width(PAULIE_WIDTH)
-	$paulie.height(PAULIE_HEIGHT)
+	$paulie.height(PAULIE_WIDTH * PAULIE_ASPECT_RATIO)
 
 
 	// --------------------------
@@ -80,49 +59,60 @@ $(function ()
 	$('img').on('dragstart', function () { return false; }); // no drag
 	$('a').on('dragstart', function () { return false; }) // no drag
 
-	// --------------------------
-	// Netsurf
-	// --------------------------
 
+	// -------------------------
+	//  NetSurf Window
+	// -------------------------
+
+	var $NetSurf = $('#WindowTemplate').clone();
+
+	$NetSurf.attr("id", "NetSurf");
+	$NetSurf.css("right", "70%");
+	$NetSurf.height(400);
+	$NetSurf.width(350);
+
+	$("#Desktop").append($NetSurf);
+
+	$("#NetSurf").draggable(dragDefaults);
+	$("#NetSurf").resizable({ helper: "ui-resizable-helper", minWidth: 200, minHeight: 250, maxHeight: 600, maxWidth: 900 })
+	$('#NetSurf .scrollbar-inner').scrollbar();
+
+	$("#WindowTemplate").hide();
+
+	// Content
+	let netStack = [];
+	let currentPath = "/fire-of-life";
+
+	$.get(currentPath, (data) =>
+	{
+		$("#NetSurf .content").html(data);
+	});
+
+	const renderPage = (currentPath) =>
+	{
+		$.get(currentPath, (data) => $("#NetSurf .content").html(data));
+		$("#NetSurf .webpage-title").text(currentPath)
+	}
 
 	$('body').on('click', '.ui.window .content a', function (e)
 	{
 		e.preventDefault(e);
-
-
-		var destination = $(this).attr('href');
-		console.log(destination)
-
-		netStack.push(destination);
-		$("#NetSurf button").attr('disabled', false);
-
-		var $content = $("#NetSurf .content");
-		// if (!contentParent.hasClass("content")) { contentParent = contentParent.parent(); }
-		// if (!contentParent.hasClass("content")) { contentParent = contentParent.parent(); }
-		// if (!contentParent.hasClass("content")) { contentParent = contentParent.parent(); }
-
-		$.get(destination, (data) => $content.html(data));
+		netStack.push(currentPath);
+		currentPath = $(this).attr('href')
+		renderPage(currentPath)
 	});
 
-	$('#NetSurf button').on('click', function (e)
+	$('body').on('click', '.ui.window a.back', function (e)
 	{
 		e.preventDefault(e);
-		var destination = netStack.shift();
-		console.log(destination)
+		if (netStack.length > 0) {
+			currentPath = netStack.pop();
+			renderPage(currentPath)
+		}
 
-		var $content = $("#NetSurf .content");
-
-		$.get(destination, (data) =>
-		{
-
-			console.log(data)
-			$content.html(data)
-			// $content.html("<h1>gart</h1>")
-
-		});
 	});
 
-
+	// ---
 
 	$paulie.isClicking = false;
 

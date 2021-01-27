@@ -45,18 +45,90 @@
 		$('#LoadDisk .scrollbar-inner').scrollbar();
 
 		// Netsurf		
-		$("#NetSurf").draggable(dragDefaults);
-		$("#NetSurf").resizable({ helper: "ui-resizable-helper", minWidth: 200, minHeight: 250, maxHeight: 600, maxWidth: 900 })
-		$('#NetSurf .scrollbar-inner').scrollbar();
+
 
 		$('.ui.header').on('mousedown', function () {
 			$(this).parent().css("zIndex", currentZ++);
 		})
 
+
 	});
 
 
 </script>
+
+
+<div class="ui window" id="WindowTemplate" style="width:200px;height:350px;right:10%;top:10%;">
+
+	<div class="ui header system border">
+		<div class="ui close system border"></div>
+		<span class="ui  system text">netsurf --> <span class="webpage-title"></span></span>
+	</div>
+
+	<div class="nav system border">
+		<a class="btn back">back</a>
+	</div>
+
+	<div class="ui scroll-baby system border">
+		<div class="ui scrollbar-inner">
+
+			<div class="webpage content page1">
+
+			</div>
+
+		</div>
+	</div>
+
+</div>
+
+
+
+<div class="ui window" id="LoadDisk" style="width: 300px;height:300px;top:10%;right:10%">
+
+	<div class="ui header system border">
+		<div class="ui close system border"></div>
+		<span class="ui system text">load disk</span>
+	</div>
+
+	<div class="ui scroll-baby system border">
+		<div class="ui scrollbar-inner system text">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,
+				scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.
+				Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel
+				hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,
+				pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam
+				sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,
+				ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget
+				nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam
+				viverra nisi, in interdum massa nibh nec erat.
+			</p>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,
+				scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.
+				Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel
+				hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,
+				pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam
+				sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,
+				ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget
+				nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam
+				viverra nisi, in interdum massa nibh nec erat.
+			</p>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,
+				scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.
+				Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel
+				hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,
+				pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam
+				sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,
+				ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget
+				nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam
+				viverra nisi, in interdum massa nibh nec erat.
+			</p>
+		</div>
+	</div>
+</div>
+
 
 
 <div id="QuantumRectangle" class="ui window" style="width: 200px;height:200px;bottom:10%;left:50%;">
@@ -69,77 +141,6 @@
 	<div class="scroll-baby system border ui">
 		<div class="scrollbar-inner ui">
 			<img src="/assets/images/qr.png" width="400" />
-		</div>
-	</div>
-
-</div>
-
-<div class="ui window" id="LoadDisk" style="width: 300px;height:300px;top:10%;left:10%">
-
-	<div class="ui header system border">
-		<div class="ui close system border"></div>
-		<span class="ui system text">load disk</span>
-	</div>
-
-	<div class="ui scroll-baby system border">
-		<div class="ui scrollbar-inner">
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,
-				scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.
-				Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel
-				hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,
-				pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam
-				sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,
-				ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget
-				nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam
-				viverra nisi, in interdum massa nibh nec erat.
-			</p>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,
-				scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.
-				Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel
-				hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,
-				pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam
-				sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,
-				ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget
-				nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam
-				viverra nisi, in interdum massa nibh nec erat.
-			</p>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a,
-				scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.
-				Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel
-				hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue,
-				pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam
-				sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare,
-				ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget
-				nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam
-				viverra nisi, in interdum massa nibh nec erat.
-			</p>
-		</div>
-	</div>
-</div>
-
-<div class="ui window" id="NetSurf" style="width:200px;height:350px;right:10%;top:10%;">
-
-	<div class="ui header system border">
-		<div class="ui close system border"></div>
-		<span class="ui  system text">netsurf --> <span class="webpage-title">welcome</span></span>
-	</div>
-
-	<div class="nav system border">
-		<button disabled class="back">back</button>
-	</div>
-
-	<div class="ui scroll-baby system border">
-		<div class="ui scrollbar-inner">
-
-			<div class="webpage content page1">
-				<p>welcome</p>
-				<p><a href="/hello">hello</a></p>
-				<p><a href="/bye">goodbye</a></p>
-			</div>
-
 		</div>
 	</div>
 
