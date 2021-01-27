@@ -90,7 +90,27 @@ $(function ()
 
 	const renderPage = (currentPath) =>
 	{
-		$.get(currentPath, (data) => $("#NetSurf .content").html(data));
+
+		var settings = {
+			'cache': false,
+			// 'dataType': "jsonp",
+			// "async": true,
+			"crossDomain": true,
+			"url": currentPath,
+			"method": "GET",
+			"headers": {
+				"accept": "application/json",
+				"Access-Control-Allow-Origin": "*"
+			}
+		}
+
+		$.ajax(settings).done(function (response)
+		{
+			console.log(response);
+
+		});
+
+		$.ajax(settings).done((data) => $("#NetSurf .content").html(data));
 		$("#NetSurf .webpage-title").text(currentPath)
 	}
 
