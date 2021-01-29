@@ -92,25 +92,26 @@ $(function ()
 	{
 
 		var settings = {
-			'cache': false,
-			// 'dataType': "jsonp",
-			// "async": true,
-			"crossDomain": true,
-			"url": currentPath,
-			"method": "GET",
-			"headers": {
-				"accept": "application/json",
+			method: 'GET',
+			mode: 'cors', // no-cors, *cors, same-origin
+			cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+			// credentials: 'same-origin', // include, *same-origin, omit
+			headers: {
+
 				"Access-Control-Allow-Origin": "*"
-			}
-		}
+			},
+			// redirect: 'follow', // manual, *follow, error
+			// referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+			// body: JSON.stringify(data) // body data type must match "Content-Type" header
+		};
 
-		$.ajax(settings).done(function (response)
-		{
-			console.log(response);
+		fetch(currentPath, settings)
+			.then(response => response.text())
+			.then(data => $("#NetSurf .content").html(data));
 
-		});
 
-		$.ajax(settings).done((data) => $("#NetSurf .content").html(data));
+
+		// $.ajax(settings).done((data) => $("#NetSurf .content").html(data));
 		$("#NetSurf .webpage-title").text(currentPath)
 	}
 
