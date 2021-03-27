@@ -70,7 +70,7 @@ const makeWindowDynamic = (className, w, h, top, left, tallest, thinnest) => {
 		.height(h).width(w)
 		.css("top", top + "%")
 		.css("left", left + "%")
-		// .hide()
+		.hide()
 }
 let currentZ = 13;
 function putWindowOnTop() {
@@ -79,7 +79,7 @@ function putWindowOnTop() {
 
 makeWindowDynamic("fart", 330, 290, 30, 30, 800, 900)
 makeWindowDynamic("netsurf", 300, 400, 20, 70, 800, 900)
-makeWindowDynamic("paint", 200, 200, 70, 30, 210, 210)
+makeWindowDynamic("paint", 400, 500, 40, 30, 210, 210)
 makeWindowDynamic("niftydex", 300, 400, 10, 10, 800, 900)
 
 // ======================================================================================== 
@@ -106,11 +106,7 @@ function handleIconHighlight(e) {
 
 $(".icon").on("mousedown",function() {
 	$(this).addClass("pressing");
-	// $(this).addClass("pressed");
 	$(this).toggleClass("pressed");
-	// if(!$(this).hasClass("pressed")) {
-	// 	$(this).addClass("pressed")
-	// }
 })
 $(".icon").on("mouseup",function() {
 	$(this).removeClass("pressing");
@@ -158,25 +154,26 @@ $('.ui.window .close').on('click', function () {
 })
 let netStack = [];
 
-// $('body').on('click', '.ui.window .content a', function (e) {
-// 	e.preventDefault(e);
-// 	var destination = $(this).attr('href');
-// 	console.log(destination)
-// 	netStack.push(destination);
-// 	$("#NetSurf button").attr('disabled', false);
-// 	var $content = $("#NetSurf .content");
-// 	$.get(destination, (data) => $content.html(data));
-// });
+$('body').on('click', '.ui.window.netsurf .content a', function (e) {
+	
+	e.preventDefault(e);
+	var destination = $(this).attr('href');
+	console.log(destination)
+	netStack.push(destination);
+	// $("#NetSurf button").attr('disabled', false);
+	var $content = $(".netsurf .content");
+	$.get(destination, (data) => $content.html(data));
+});
 
-// $('#NetSurf button').on('click', function (e) {
-// 	e.preventDefault(e);
-// 	var destination = netStack.shift();
-// 	console.log(destination)
-// 	var $content = $("#NetSurf .content");
-// 	$.get(destination, (data) => {
-// 		console.log(data)
-// 		$content.html(data)
-// 		// $content.html("<h1>gart</h1>")
-// 	});
-// });
+$('.netsurf button').on('click', function (e) {
+	e.preventDefault(e);
+	var destination = netStack.shift();
+	console.log(destination)
+	var $content = $("#NetSurf .content");
+	$.get(destination, (data) => {
+		console.log(data)
+		$content.html(data)
+		// $content.html("<h1>gart</h1>")
+	});
+});
 
