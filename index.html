@@ -1,13 +1,61 @@
 ---
 layout: base
-title: PaulieOS
+title: acornOS
 permalink: /
+NFT_URL: /assets/IPFS/bafybeie3mf7isc47rtujjzpt2n5jra7abqjx5m4f4exsmdzc6zqbaytzl4
 ---
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: " en" }}">
 
-{% include audio.html %}
+<head>
+	<script>console.clear();</script>
 
-<div id="Desktop">
-	{% include cursor.html %}
-	{% include icons.html %}
-	{% include windows.html %}
-</div>
+	<!-- Meta Craps -->
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+	<meta name="vt" content="width=device-width" />
+
+	<title>{{ page.title }}</title>
+	<link rel="icon" type="image/png" href="{{ page.NFT_URL }}.ico" />
+
+	<!-- Cascading Butt Sheets -->
+	<link rel="stylesheet" href="/css/main.css?cachedz={{ page.cachedz }}">
+
+	<!-- Not My Javascript -->
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<script src="/scripts/jquery.scrollbar.js"></script>
+</head>
+
+<body>
+
+	<audio controls preload="auto" id="ClickDownSound" style="display:none;">
+		<source src="/assets/sounds/click_down.mp3" type="audio/mpeg">
+	</audio>
+	<audio controls preload="auto" id="ClickUpSound" style="display:none;">
+		<source src="/assets/sounds/click_up.mp3" type="audio/mpeg">
+	</audio>
+	<audio controls preload="auto" id="FartSound" style="display:none;">
+		<source src="/assets/sounds/fart.mp3" type="audio/mpeg">
+	</audio>
+
+
+
+	<div id="Desktop">
+		{% include windows.html %}
+	</div>
+
+	<div class="system navbar">
+		<div class="icon system-border system-icon niftydex"><span>niftydex</span></div>
+		<div class="icon system-border system-icon netsurf"><span>netsurf</span></div>
+		<div class="icon system-border system-icon paint"><span>paint</span></div>
+		<div class="bg"></div>
+	</div>
+
+	<script src="/scripts/helpers.js"></script>
+	<script src="/scripts/paulie.js?cachedz=2"></script>
+
+</body>
+
+</html>
