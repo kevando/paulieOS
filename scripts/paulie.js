@@ -77,6 +77,16 @@ function putWindowOnTop() {
 	$(this).parent().css("zIndex", currentZ++);
 }
 
+
+$(".ui.window").draggable({ handle: '.header', containment: "body", cursor: "none" });
+$('.ui.window .scrollbar-inner').scrollbar();
+
+$('.ui.window .close').on('click', function () {
+	$(this).parent().parent().hide()
+})
+
+
+
 makeWindowDynamic("fart", 330, 290, 30, 30, 800, 900)
 makeWindowDynamic("netsurf", 300, 400, 20, 70, 800, 900)
 makeWindowDynamic("paint", 400, 500, 40, 30, 210, 210)
@@ -146,12 +156,6 @@ $('.ui.header').on('mousedown', putWindowOnTop)
 
 
 
-$(".ui.window").draggable({ handle: '.header', containment: "body", cursor: "none" });
-$('.ui.window .scrollbar-inner').scrollbar();
-
-$('.ui.window .close').on('click', function () {
-	$(this).parent().parent().hide()
-})
 let netStack = [];
 
 $('body').on('click', '.ui.window.netsurf .content a', function (e) {
