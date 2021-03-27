@@ -1,38 +1,14 @@
-
-const LEFT_CLICK = 1;
-
 const COMPUTED_SCALE = invlerp(900, 2000, document.body.clientWidth);
+const ASPECT_RATIO = 1.410256
+const WIDTH_MIN = 40; // SCALE = 0
+const WIDTH_MAX = 70; // SCALE = 1
+// const WIDTH = lerp(WIDTH_MIN, WIDTH_MAX, COMPUTED_SCALE)
+// const HEIGHT = WIDTH * ASPECT_RATIO;
 
-const PAULIE_ASPECT_RATIO = 1.410256
-const PAULIE_WIDTH_MIN = 40; // SCALE = 0
-const PAULIE_WIDTH_MAX = 70; // SCALE = 1
-const PAULIE_WIDTH = lerp(PAULIE_WIDTH_MIN, PAULIE_WIDTH_MAX, COMPUTED_SCALE)
-const PAULIE_HEIGHT = PAULIE_WIDTH * PAULIE_ASPECT_RATIO;
-
+const HEIGHT = 200;
+const WIDTH = 126;
 const BODY = "/assets/paulie/body-smirk.svg";
 const SHADOW = "/assets/paulie/shadow.svg";
-
-const min = 2;
-const max = 6;
-const size = 4;
-
-var system = {
-
-	// scale: invlerp(2, 5,),
-	sizes: {
-		border: range(min, max, 2, 6, size),
-		font: range(min, max, 12, 22, size),
-		icon: 40
-	}
-
-}
-let netStack = [];
-
-const BORDER_WIDTH = 3;//range(min, max, 2, 6, size)
-
-
-
-// ----- Load Sounds from Audio
 
 const Sounds = {
 	down: document.getElementById("ClickDownSound"),
@@ -43,32 +19,22 @@ const Sounds = {
 Sounds.down.load();
 Sounds.up.load();
 
+// ============================================ 
+//					Paulie
+// ============================================
 
-// Dynamic Sizing
-$('.system.border').css("borderWidth", BORDER_WIDTH);
-$('.system.text').css("fontSize", system.sizes.font);
-$('.ui.window .content').css('fontSize', system.sizes.font)
-$('.icon .text').css("fontSize", system.sizes.font);
-$('.icon').width(system.sizes.icon).height(system.sizes.icon);
+let $paulie = $("<div id='Paulie'>");
 
-// ---------------
-
-let $paulie = $("<div>").attr("id", "Paulie");
-
+$paulie.width(WIDTH).height(HEIGHT)
+$paulie.isClicking = false;
 $paulie.append($("<img>").addClass("body").attr("src", BODY));
 $paulie.append($("<img>").addClass("shadow").attr("src", SHADOW));
-$paulie.width(PAULIE_WIDTH).height(PAULIE_HEIGHT)
-$paulie.prependTo($("body"));
 
+$paulie.prependTo($("body"));
 $paulie.playSound = function (noise, volume = 0.2) {
 	Sounds[noise].volume = volume;
 	Sounds[noise].play()
 }
-$paulie.isClicking = false;
-
-
-
-
 $paulie.setTranslate = function (x, y) {
 	$(this).css("transform", `translate(${x}px, ${y}px)`)
 }
@@ -77,13 +43,13 @@ const mousemove = (e) => {
 	$paulie.setTranslate(e.pageX, e.pageY)
 };
 const mouseUp = e => {
-	if (e.which !== LEFT_CLICK) return
+	if (e.which !== 1) return; // only handle left click
 	$paulie.playSound("up")
 	$paulie.isClicking = false;
 	$paulie.removeClass("clicking");
 };
 const mouseDown = e => {
-	if (e.which !== LEFT_CLICK) return
+	if (e.which !== 1) return
 	$paulie.playSound("down")
 	$paulie.isClicking = true;
 	$paulie.addClass("clicking")
@@ -93,7 +59,9 @@ const stopEvent = e => {
 	return false;
 };
 
-// ----- Windows -----
+// ======================================================================================== 
+//										Windows
+// ========================================================================================
 
 const makeWindowDynamic = (className, w, h, top, left, tallest, thinnest) => {
 	const props = { helper: "ui-resizable-helper", minWidth: w, minHeight: h, maxHeight: tallest || h, maxWidth: thinnest || w }
@@ -102,7 +70,7 @@ const makeWindowDynamic = (className, w, h, top, left, tallest, thinnest) => {
 		.height(h).width(w)
 		.css("top", top + "%")
 		.css("left", left + "%")
-		.hide()
+		// .hide()
 }
 let currentZ = 13;
 function putWindowOnTop() {
@@ -114,7 +82,9 @@ makeWindowDynamic("netsurf", 300, 400, 20, 70, 800, 900)
 makeWindowDynamic("paint", 200, 200, 70, 30, 210, 210)
 makeWindowDynamic("niftydex", 300, 400, 10, 10, 800, 900)
 
-// ----- Desktop Icons ------
+// ======================================================================================== 
+//										Icons
+// ========================================================================================
 
 const makeIcon = (name, left = 0, top = 0) => {
 	const $span = $("<span>").addClass("text").text(name);
@@ -134,14 +104,26 @@ function handleIconHighlight(e) {
 	}
 }
 
-let repeatFart;
-const $fart_gif = makeIcon("fart.gif", 10, 60);
-$fart_gif.on("dblclick", function () {
-	$(".fart.window").show();
-	repeatFart = setInterval(function () { Sounds.fart.play() }, 960);
+$(".icon").on("mousedown",function() {
+	$(this).addClass("pressing");
+	// $(this).addClass("pressed");
+	$(this).toggleClass("pressed");
+	// if(!$(this).hasClass("pressed")) {
+	// 	$(this).addClass("pressed")
+	// }
 })
-$(".fart.window .close").on("click", function () { clearInterval(repeatFart) })
-$(".desktop.icon").draggable();
+$(".icon").on("mouseup",function() {
+	$(this).removeClass("pressing");
+})
+
+let repeatFart;
+// const $fart_gif = makeIcon("fart.gif", 10, 60);
+// $fart_gif.on("dblclick", function () {
+// 	$(".fart.window").show();
+// 	repeatFart = setInterval(function () { Sounds.fart.play() }, 960);
+// })
+// $(".fart.window .close").on("click", function () { clearInterval(repeatFart) })
+// $(".desktop.icon").draggable();
 
 // ----- Navbar Icons ------
 
@@ -174,7 +156,7 @@ $('.ui.window .scrollbar-inner').scrollbar();
 $('.ui.window .close').on('click', function () {
 	$(this).parent().parent().hide()
 })
-
+let netStack = [];
 
 // $('body').on('click', '.ui.window .content a', function (e) {
 // 	e.preventDefault(e);
