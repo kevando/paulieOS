@@ -1,21 +1,6 @@
 <script>
 
-	$(function () {
-
-		$(".icon").draggable();
-
-		$("#Desktop").on('mousedown', function (e) {
-			if (!$(e.target).hasClass('ui') && !$(e.target).parent().hasClass('ui')) { $('.icon').removeClass("selected"); }
-			if ($(e.target).hasClass('icon')) { $(e.target).addClass('selected') }
-			if ($(e.target).parent().hasClass('icon')) { $(e.target).parent().addClass('selected') }
-		});
-	})
 </script>
 
 
 <!-- file.png -->
-
-
-<div class="icon system-border system-icon empty" id="FileIcon" style="left:20%;bottom:20%">
-	<span class="text">thiccc.png</span>
-</div>

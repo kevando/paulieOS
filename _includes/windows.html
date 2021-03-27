@@ -1,64 +1,21 @@
-<script type="text/javascript">
-	// autoScrollSize [true|false] (default: true)
-	// automatically calculate scrollbar size depending on container/content size
-	// autoUpdate [true|false] (default: true)
-	// automatically update scrollbar if container/content size is changed
-	// disableBodyScroll [true|false] (default: false)
-	// if this option is enabled and the mouse is over the scrollable container, the main page won't be scrolled
-	// duration [ms] (default: 200)
-	// scroll speed duration when the mouse is over scrollbar (scroll emulating mode)
-	// ignoreMobile [true|false] (default: false)
-	// do not initialize custom scrollbars on mobile devices
-	// ignoreOverlay [true|false] (default: false)
-	// do not initialize custom scrollbars in browsers when native scrollbars overlay content (Mac OS, mobile devices, etc...)
-	// scrollStep [px] (default: 30)
-	// showArrows [true|false] (default: false)
-	// stepScrolling [true|false] (default: true)
-	// scrollx [string|element] (default: simple)
-	// scrolly [string|element] (default: simple)
-	// onDestroy [function] (default: null)
-	// onInit [function] (default: null)
-	// onScroll [function] (default: null)
-
-	// onUpdate [function] (default: null)
 
 
-	const dragDefaults = {
-		handle: '.header',
-		containment: "body",
-		cursor: "none",
-		// zIndex: 100,
-	};
+<div class="ui window fart" >
 
-	let currentZ = 13;
+	<div class="ui header system border">
+		<div class="ui close system border"></div>
+		<span class="ui system text">fart.gif</span>
+	</div>
 
-	$(function () {
+	<div class="scroll-baby system border ui">
+		<div class="scrollbar-inner ui">
+			<img src="/assets/fart.gif" width="400" />
+		</div>
+	</div>
 
-		// (QR) Quantum Rectangle
-		$("#QuantumRectangle").draggable(dragDefaults);
-		$("#QuantumRectangle").resizable({ helper: "ui-resizable-helper", minWidth: 200, minHeight: 200, maxHeight: 210, maxWidth: 210 })
-		$('#QuantumRectangle .scrollbar-inner').scrollbar();
+</div>
 
-		// Load Disk
-		$("#LoadDisk").draggable(dragDefaults);
-		$("#LoadDisk").resizable({ helper: "ui-resizable-helper", minWidth: 200, minHeight: 200, maxHeight: 600, maxWidth: 900 })
-		$('#LoadDisk .scrollbar-inner').scrollbar();
-
-		// Netsurf		
-
-
-		$('.ui.header').on('mousedown', function () {
-			$(this).parent().css("zIndex", currentZ++);
-		})
-
-
-	});
-
-
-</script>
-
-
-<div class="ui window" id="WindowTemplate" style="width:200px;height:350px;right:10%;top:10%;">
+<div class="ui window paint" >
 
 	<div class="ui header system border">
 		<div class="ui close system border"></div>
@@ -81,9 +38,7 @@
 
 </div>
 
-
-
-<div class="ui window" id="LoadDisk" style="width: 300px;height:300px;top:10%;right:10%">
+<div class="ui window niftydex">
 
 	<div class="ui header system border">
 		<div class="ui close system border"></div>
@@ -129,9 +84,7 @@
 	</div>
 </div>
 
-
-
-<div id="QuantumRectangle" class="ui window" style="width: 200px;height:200px;bottom:10%;left:50%;">
+<div class="ui window netsurf">
 
 	<div class="ui header system border">
 		<div class="ui close system border"></div>
