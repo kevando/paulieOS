@@ -7,7 +7,7 @@
 	overflow: hidden;
 }
 
-// ======================================================================================== 
+// ========================================================================================
 //										Windows
 // ========================================================================================
 
@@ -272,7 +272,7 @@ $contentPadding: 10px;
 	top: -12px;
 }
 
-// ======================================================================================== 
+// ========================================================================================
 //										Icons
 // ========================================================================================
 
@@ -297,15 +297,14 @@ $contentPadding: 10px;
 		z-index: 0;
 	}
 
-	// 	&.selected {
-	// 		border-color: $blue;
-
-	// 		.text {
-	// 			background-color: $blue;
-	// 			color: white;
-	// 		}
-	// }
-	// }
+	.icon {
+		&.pressing {
+			transform: scale(0.94);
+		}
+		&.pressed {
+			transform: scale(0.95);
+		}
+	}
 }
 
 .icon {
@@ -321,16 +320,27 @@ $contentPadding: 10px;
 	width: $size;
 	height: $size;
 
-	&.pressing {
-		transform: scale(0.94);
-	}
-	&.pressed {
-		transform: scale(0.95);
-	}
 	&::after {
 		position: absolute;
 		bottom: -33px;
 		font-size: 25px;
+	}
+}
+
+.desktop {
+	.icon {
+		border: solid 4px blue;
+		background-size: 110%;
+		background-position:center;
+		// box-sizing: border-box;
+		&.pressed {
+			border-color: $blue;
+
+			&::after {
+				background-color: $blue;
+				color: white;
+			}
+		}
 	}
 }
 
